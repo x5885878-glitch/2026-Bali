@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>🌴 峇里島 2026 · 6人行程</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1c1c1e;--stone:#8e8e93;--cream:#f5f0eb;--parch:#ede8e0;
+  --gold:#b5892a;--teal:#1a6b6b;--tl:#e0f0ef;
+  --red:#c0392b;--rl:#fdecea;--ora:#c47c2b;--ol:#fef3e2;
+  --grn:#2d6a4f;--gl:#e8f4ee;--wht:#fff;
+  --sh:0 2px 12px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:14px;line-height:1.6;min-height:100vh}
+.hdr{background:var(--ink);padding:16px 14px 12px;position:sticky;top:0;z-index:300}
+.hdr h1{font-family:'Cormorant Garamond',serif;font-size:20px;color:#fff;font-weight:600}
+.hdr p{font-size:11px;color:var(--stone);margin-top:1px;letter-spacing:.05em;text-transform:uppercase}
+.tabs{display:flex;background:#fff;border-bottom:1px solid var(--parch);position:sticky;top:60px;z-index:299;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;padding:10px 13px;font-size:12px;font-weight:500;color:var(--stone);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.tab.on{color:var(--ink);border-bottom-color:var(--gold);font-weight:600}
+.panel{display:none;padding:10px 12px 60px}.panel.on{display:block}
+.sec{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);padding:14px 4px 6px}
+.day{background:#fff;border-radius:12px;margin-bottom:8px;box-shadow:var(--sh);overflow:hidden}
+.dh{display:flex;align-items:center;padding:12px 13px;cursor:pointer;gap:9px;-webkit-tap-highlight-color:transparent;user-select:none}
+.dh:active{background:var(--cream)}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.ds{background:var(--teal)}.dn{background:var(--gold)}.dt{background:var(--stone)}
+.ddate{font-size:11px;color:var(--stone);min-width:48px;font-weight:500}
+.dtit{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;flex:1;line-height:1.3}
+.darr{font-size:10px;color:var(--stone);transition:transform .2s;flex-shrink:0}
+.db{display:none;border-top:1px solid var(--parch);padding:6px 13px 10px}
+.item{display:flex;gap:9px;padding:7px 0;border-bottom:1px solid #f5f0eb}
+.item:last-child{border-bottom:none}
+.it{font-size:10px;color:var(--stone);min-width:36px;padding-top:3px;font-weight:500}
+.ii{font-size:14px;min-width:20px;text-align:center}
+.ic{flex:1}
+.in{font-size:13px;font-weight:500;line-height:1.4}
+.id{font-size:11px;color:var(--stone);margin-top:2px;line-height:1.5}
+.tag{display:inline-block;font-size:10px;padding:2px 7px;border-radius:20px;margin:3px 3px 0 0;font-weight:500;line-height:1.6}
+.tr{background:var(--rl);color:var(--red);border:1px solid #f5c6c2}
+.to{background:var(--ol);color:var(--ora);border:1px solid #f5d9a8}
+.tg{background:var(--gl);color:var(--grn);border:1px solid #a8d5bb}
+.tb{background:var(--tl);color:var(--teal);border:1px solid #a0d0cf}
+.tx{background:#e8e8f0;color:#555;border:1px solid #d0d0de}
+.tw{background:#fff3cd;color:#856404;border:1px solid #ffc107}
+.links{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.lnk{font-size:11px;padding:4px 10px;border-radius:20px;background:var(--tl);color:var(--teal);text-decoration:none;border:1px solid #b0d8d7;font-weight:500}
+.htl{display:flex;gap:10px;margin:10px 0 2px;padding:10px 11px;background:var(--parch);border-radius:8px;border:1px solid #ddd5c8}
+.hi{font-size:18px;flex-shrink:0;padding-top:2px}
+.hn{font-size:13px;font-weight:600;line-height:1.3}
+.hd{font-size:11px;color:var(--stone);margin-top:2px;line-height:1.5}
+.hp{font-size:12px;color:var(--gold);font-weight:700;margin-top:3px}
+#map-outer{background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--sh);margin-bottom:10px}
+.mhdr{padding:11px 13px;border-bottom:1px solid var(--parch);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.mtit{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600}
+.mbtns{display:flex;gap:4px}
+.mbtn{font-size:11px;padding:4px 10px;border-radius:20px;border:1px solid var(--parch);background:var(--cream);color:var(--stone);cursor:pointer;font-weight:500;-webkit-tap-highlight-color:transparent}
+.mbtn.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+#gmap{width:100%;height:380px;background:#e0e0e0}
+.mleg{padding:8px 13px;display:flex;gap:12px;flex-wrap:wrap;border-top:1px solid var(--parch)}
+.mli{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--stone)}
+.mld{width:9px;height:9px;border-radius:50%}
+.gm-iw{font-family:'DM Sans',sans-serif;padding:4px 2px;min-width:150px}
+.gm-iw-name{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:#1c1c1e;margin-bottom:2px}
+.gm-iw-date{font-size:11px;color:#8e8e93}
+.gm-iw-desc{font-size:12px;color:#444;margin-top:5px;line-height:1.5}
+.gm-iw-tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:20px;margin-top:5px;font-weight:600}
+.fc{background:#fff;border-radius:12px;margin-bottom:8px;box-shadow:var(--sh);overflow:hidden}
+.fh{padding:11px 13px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:500;-webkit-tap-highlight-color:transparent;gap:8px}
+.fh:active{background:var(--cream)}
+.fh .fa{font-size:10px;color:var(--stone);transition:transform .2s;flex-shrink:0}
+.fb{display:none;padding:10px 13px 12px;font-size:12px;line-height:1.7;border-top:1px solid var(--parch)}
+.fr{display:flex;gap:6px;margin-bottom:4px}
+.fl{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--stone);min-width:52px;padding-top:2px;flex-shrink:0}
+.fv{flex:1;font-size:12px}
+.verd{display:inline-block;padding:2px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-bottom:8px}
+.vr{background:var(--rl);color:var(--red)}.vo{background:var(--ol);color:var(--ora)}.vg{background:var(--gl);color:var(--grn)}
+.todo{background:#fff;border-radius:12px;padding:12px 13px;box-shadow:var(--sh);margin-bottom:8px}
+.ttit{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:8px}
+.ti{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid var(--parch);font-size:12px;line-height:1.5}
+.ti:last-child{border-bottom:none}
+.tnum{width:18px;height:18px;border-radius:50%;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.cb{background:#fff;border-radius:12px;margin-bottom:8px;padding:12px 13px;box-shadow:var(--sh)}
+.ctit{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:10px}
+.cr{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;font-size:13px;border-bottom:1px solid var(--parch)}
+.cr:last-child{border-bottom:none;font-weight:600;font-size:14px;padding-top:8px}
+.am{font-weight:500;color:var(--teal)}.cr:last-child .am{color:var(--gold);font-size:15px}
+.csub{font-size:10px;color:var(--stone)}
+.cnote{font-size:10px;color:var(--stone);margin-top:6px;line-height:1.5}
+.ctotal{background:var(--ink);border-radius:12px;padding:16px 13px;margin-bottom:8px}
+.ctr{display:flex;justify-content:space-between;color:var(--stone);font-size:13px;padding:3px 0}
+.ctr.grand{color:#fff;font-size:18px;font-family:'Cormorant Garamond',serif;font-weight:600;padding-top:10px;margin-top:6px;border-top:1px solid #444}
+.ctr.grand .am{color:var(--gold)}
+.ctr.sub2{border-top:1px solid #333;margin-top:4px;padding-top:8px;color:#aaa}
+.alert{border-radius:8px;padding:10px 12px;font-size:12px;margin-bottom:10px;line-height:1.6}
+.ao{background:var(--ol);border:1px solid #f5d9a8;color:#7a4500}
+.ar{background:var(--rl);border:1px solid #f5c6c2;color:var(--red)}
+.ai{background:var(--tl);border:1px solid #a0d0cf;color:var(--teal)}
+.edit-bar{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.eb{font-size:11px;padding:6px 12px;border-radius:20px;border:none;cursor:pointer;font-weight:600;font-family:'DM Sans',sans-serif;-webkit-tap-highlight-color:transparent}
+.eb-add{background:var(--teal);color:#fff}
+.eb-add:active{background:#155a5a}
+.eb-save{background:var(--grn);color:#fff}
+.eb-cancel{background:#e0e0e0;color:#555}
+.eb-del{background:var(--rl);color:var(--red);border:1px solid #f5c6c2}
+.itin-edit-mode .day{border:1.5px solid #e0e0e0}
+.itin-edit-mode .day.drag-over{border-color:var(--teal);background:#f0faf9}
+.itin-edit-mode .day.dragging{opacity:.4}
+.day-edit-btns{display:none;gap:5px;margin-left:auto}
+.itin-edit-mode .day-edit-btns{display:flex}
+.day-move{cursor:grab;font-size:16px;color:var(--stone);padding:0 4px;line-height:1}
+.day-move:active{cursor:grabbing}
+.day-del-btn{font-size:11px;padding:3px 8px;border-radius:12px;background:var(--rl);color:var(--red);border:1px solid #f5c6c2;cursor:pointer;font-weight:600}
+.add-day-form{background:#fff;border-radius:12px;padding:14px;box-shadow:var(--sh);margin-bottom:10px;display:none}
+.add-day-form.show{display:block}
+.form-row{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.form-input{flex:1;min-width:100px;padding:7px 10px;border:1px solid var(--parch);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;background:#fff;color:var(--ink)}
+.form-input:focus{outline:none;border-color:var(--teal)}
+.form-label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);margin-bottom:4px;display:block}
+.todo-item-row{display:flex;align-items:flex-start;gap:8px;padding:7px 0;border-bottom:1px solid var(--parch)}
+.todo-item-row:last-child{border-bottom:none}
+.todo-cb{width:18px;height:18px;border-radius:5px;border:2px solid #ccc;flex-shrink:0;margin-top:1px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;background:#fff}
+.todo-cb.done{background:var(--grn);border-color:var(--grn)}
+.todo-cb.done::after{content:'✓';color:#fff;font-size:11px;font-weight:700}
+.todo-text{flex:1;font-size:12px;line-height:1.5;cursor:pointer}
+.todo-text.done{text-decoration:line-through;color:var(--stone)}
+.todo-del{font-size:14px;color:#ccc;cursor:pointer;padding:0 2px;flex-shrink:0;line-height:1}
+.todo-del:hover{color:var(--red)}
+.add-todo-row{display:flex;gap:6px;margin-top:8px}
+.add-todo-input{flex:1;padding:6px 10px;border:1px solid var(--parch);border-radius:20px;font-size:12px;font-family:'DM Sans',sans-serif;background:#fff}
+.add-todo-input:focus{outline:none;border-color:var(--teal)}
+.add-todo-btn{padding:6px 12px;border-radius:20px;background:var(--teal);color:#fff;border:none;font-size:12px;font-weight:600;cursor:pointer}
+.todo-section-title{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);padding:10px 0 5px;border-top:1px solid var(--parch);margin-top:4px}
+.todo-section-title:first-child{border-top:none;padding-top:2px}
+.todo-progress{height:4px;background:#e8e8e8;border-radius:2px;margin-bottom:12px;overflow:hidden}
+.todo-progress-bar{height:100%;background:var(--grn);border-radius:2px;transition:width .3s}
+.todo-stats{font-size:11px;color:var(--stone);margin-bottom:8px}
+.cost-editable{cursor:text;border-bottom:1px dashed transparent;transition:border-color .15s;border-radius:2px;padding:1px 2px}
+.cost-editable:hover{border-bottom-color:var(--gold)}
+.cost-edit-input{background:transparent;border:none;border-bottom:2px solid var(--gold);font-weight:500;color:var(--teal);font-size:13px;width:120px;font-family:'DM Sans',sans-serif;text-align:right;outline:none;padding:1px 2px}
+.cost-actual{color:var(--grn)!important;font-weight:700!important}
+.cost-actual::before{content:'實 '}
+.cost-hint{font-size:10px;color:var(--stone);margin-bottom:6px;font-style:italic}
+.cost-grand-edit{font-size:11px;color:var(--gold);margin-top:8px;text-align:center;font-style:italic}
+.cost-summary-block{background:var(--gl);border:1px solid #a8d5bb;border-radius:8px;padding:10px 13px;margin-bottom:8px;font-size:12px}
+.csr{display:flex;justify-content:space-between;padding:3px 0;font-size:12px}
+.csr b{font-weight:600}
+.editor-bar{background:#1a6b6b;color:#fff;font-size:11px;padding:5px 14px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.editor-bar b{font-weight:700}
+.editor-badge{background:#fff;color:#1a6b6b;border-radius:10px;padding:2px 8px;font-size:10px;font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hdr">
+  <h1>🌴 峇里島 2026</h1>
+  <p>12/24 – 12/29 · 6人 · 6天5夜</p>
+</div>
+
+<!-- EDITOR/VIEWER BAR -->
+<div class="editor-bar" id="editor-bar" style="display:none">
+  <span>✏️ <b>編輯模式</b> — 可修改費用、勾選訂票進度</span>
+  <span class="editor-badge">EDITOR</span>
+</div>
+<div class="editor-bar" id="viewer-bar" style="display:none;background:#555">
+  <span>👁 唯讀模式</span>
+  <span id="sync-status" style="opacity:0;transition:opacity .5s"></span>
+</div>
+
+<!-- TABS -->
+<div class="tabs" id="tabs">
+  <div class="tab on" data-tab="itin">🗓 行程</div>
+  <div class="tab" data-tab="map">🗺 地圖</div>
+  <div class="tab" data-tab="feas">✅ 可行性</div>
+  <div class="tab" data-tab="book">🎫 訂票</div>
+  <div class="tab" data-tab="cost">💰 費用</div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- PANEL: ITINERARY                        -->
+<!-- ═══════════════════════════════════════ -->
+<div class="panel on" id="itin">
+  <div class="alert ao">⚠️ 12月為峇里島雨季，早出晚歸模式最佳。12/24–25 聖誕節交通擁擠，各段路程請預留額外 30–45 分鐘緩衝。</div>
+
+  <div class="edit-bar" id="itin-toolbar">
+    <button class="eb eb-add" id="add-item-btn">＋ 新增行程</button>
+    <button class="eb" id="itin-edit-btn">✏️ 編輯排序</button>
+  </div>
+
+  <div class="add-day-form" id="add-item-form">
+    <label class="form-label">新增至哪一天</label>
+    <div class="form-row">
+      <select class="form-input" id="ni-day-select"></select>
+    </div>
+    <div class="form-row">
+      <input class="form-input" id="ni-time" placeholder="時間（如 14:00）" style="max-width:110px">
+      <input class="form-input" id="ni-icon" placeholder="Emoji" style="max-width:70px">
+      <input class="form-input" id="ni-name" placeholder="行程名稱（必填）">
+    </div>
+    <div class="form-row">
+      <input class="form-input" id="ni-desc" placeholder="備注說明（選填）">
+    </div>
+    <div class="form-row">
+      <button class="eb eb-save">💾 新增</button>
+      <button class="eb eb-cancel">取消</button>
+    </div>
+  </div>
+
+  <div class="sec">✈️ 抵達日</div>
+
+  <!-- DAY 1 -->
+  <div class="day" id="day-1">
+    <div class="dh">
+      <div class="dot ds"></div>
+      <div class="ddate">12/24 四</div>
+      <div class="dtit">🛬 抵達峇里島 · 水明漾</div>
+      <div class="darr">▶</div>
+    </div>
+    <div class="db">
+      <div class="item">
+        <div class="it">09:10</div>
+        <div class="ii">✈️</div>
+        <div class="ic">
+          <div class="in">桃園 TPE 起飛</div>
+          <div class="id">飛行約 5.5 小時，峇里島時間慢台灣 1 小時</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">14:40</div>
+        <div class="ii">🛬</div>
+        <div class="ic">
+          <div class="in">DPS 峇里島機場降落</div>
+          <div class="id">入境 → 領行李 → 換匯（只換少量應急，水明漾匯率更好）<br>出機場預估 15:30–16:00</div>
+          <div><span class="to">⚠ 聖誕節塞車</span><span class="tx">機場→水明漾預估 60–90 分</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">17:00</div>
+        <div class="ii">🏠</div>
+        <div class="ic">
+          <div class="in">Check-in 水明漾 Villa</div>
+          <div class="id">放行李、梳洗換裝，準備出發看夕陽</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">17:30</div>
+        <div class="ii">🌅</div>
+        <div class="ic">
+          <div class="in">🍽 晚餐 · Mano Beach House</div>
+          <div class="id">海邊餐廳，可以邊吃飯邊看夕陽（日落約 18:15）。吃飯前可在海邊玩耍。</div>
+          <div><span class="tg">夕陽景觀</span><span class="tb">海鮮料理</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">晚上</div>
+        <div class="ii">💆</div>
+        <div class="ic">
+          <div class="in">按摩 · 水明漾</div>
+          <div class="id">峇里島按摩性價比極高，第一天消除旅途疲勞</div>
+        </div>
+      </div>
+      <div class="htl">
+        <div class="hi">🏡</div>
+        <div>
+          <div class="hn">水明漾 Villa</div>
+          <div class="hd">Seminyak · 1晚 · 近海灘</div>
+          <div class="hp">TWD $9,700（6人總）· 待確認</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">🤿 浮潛日</div>
+
+  <!-- DAY 2 -->
+  <div class="day" id="day-2">
+    <div class="dh">
+      <div class="dot ds"></div>
+      <div class="ddate">12/25 五</div>
+      <div class="dtit">🤿 藍夢島浮潛一日遊</div>
+      <div class="darr">▶</div>
+    </div>
+    <div class="db">
+      <div class="alert ao" style="margin:6px 0">⚠️ 聖誕節！水明漾→沙努爾預估 60–80 分，請 07:15 出發。</div>
+      <div class="item">
+        <div class="it">07:15</div>
+        <div class="ii">🚗</div>
+        <div class="ic">
+          <div class="in">包車出發前往沙努爾港</div>
+          <div class="id">聖誕節早上交通擁擠，提早出發確保準時抵達</div>
+          <div><span class="tr">聖誕節塞車日</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">09:00</div>
+        <div class="ii">⛵</div>
+        <div class="ic">
+          <div class="in">沙努爾港出發 · 藍夢島一日遊</div>
+          <div class="id">浮潛 + 藍夢島（Klook 行程）。景點：Manta Bay、Crystal Bay、Mangrove Point。12月海況若不佳會改備案地點。</div>
+          <div><span class="tw">提前確認海況</span><span class="tb">帶防水袋</span></div>
+          <div class="links">
+            <a class="lnk" href="https://www.klook.com/zh-TW/activity/21684-nusa-lembongan-manta-bay-snorkeling-experience/" target="_blank">→ Klook 訂票</a>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">午餐</div>
+        <div class="ii">🍽</div>
+        <div class="ic">
+          <div class="in">🍽 午餐 · 藍夢島餐廳</div>
+          <div class="id">行程含午餐或島上自理，推薦 Sandy Bay Beach Club</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">17:00</div>
+        <div class="ii">🚢</div>
+        <div class="ic">
+          <div class="in">返回沙努爾港 · 前往烏布</div>
+          <div class="id">沙努爾→烏布約 1–1.5 小時，抵達約 19:00。帶乾衣服在車上換。</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">19:30</div>
+        <div class="ii">🍽</div>
+        <div class="ic">
+          <div class="in">🍽 晚餐 · 烏布市區</div>
+          <div class="id">推薦：Locavore（烏布名廚料理，需提前訂位）或 Bridges Ubud（峽谷景觀）或 Kafe Ubud（輕鬆平價）</div>
+          <div><span class="tb">建議提前訂位</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">晚上</div>
+        <div class="ii">💆</div>
+        <div class="ic">
+          <div class="in">按摩 · 烏布</div>
+          <div class="id">⚠️ 明天 02:30 出發！今晚務必 21:00 前入睡</div>
+          <div><span class="tr">早睡！明天凌晨出發</span></div>
+        </div>
+      </div>
+      <div class="htl">
+        <div class="hi">🌾</div>
+        <div>
+          <div class="hn">烏布 Villa</div>
+          <div class="hd">Ubud · 3晚 · 建議選稻田景觀</div>
+          <div class="hp">TWD $47,000（6人 3晚總）· 待確認</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">🌋 火山探險日</div>
+
+  <!-- DAY 3 -->
+  <div class="day" id="day-3">
+    <div class="dh">
+      <div class="dot ds"></div>
+      <div class="ddate">12/26 六</div>
+      <div class="dtit">🌋 巴杜爾火山探險之旅</div>
+      <div class="darr">▶</div>
+    </div>
+    <div class="db">
+      <div class="alert ar" style="margin:6px 0">🚨 今天 02:30 出發！請 02:00 起床，提前與司機確認集合點。</div>
+      <div class="item">
+        <div class="it">02:30</div>
+        <div class="ii">🌙</div>
+        <div class="ic">
+          <div class="in">出發！烏布→巴杜爾山腳</div>
+          <div class="id">車程約 1–1.5 小時，凌晨路況佳。帶外套！山頂 12–18°C。</div>
+          <div><span class="tr">凌晨出發</span><span class="tx">帶薄外套</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">04:30</div>
+        <div class="ii">🚙</div>
+        <div class="ic">
+          <div class="in">巴杜爾火山吉普車日出 → 黑色熔岩</div>
+          <div class="id">4WD 吉普車穿越黑色熔岩地，日出約 05:50–06:10。12月雲霧多，但景色仍壯觀。</div>
+          <div><span class="tw">12月能見度較低</span><span class="tg">吉普車不需步行</span></div>
+          <div class="links">
+            <a class="lnk" href="https://www.klook.com/zh-TW/activity/22005-mount-batur-sunrise-experience-4wd-jeep-bali/" target="_blank">→ Klook 訂票 IDR 9,216/人</a>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">08:00</div>
+        <div class="ii">☕</div>
+        <div class="ic">
+          <div class="in">金塔瑪尼咖啡 → 德哥拉朗梯田</div>
+          <div class="id">Kintamani 高地咖啡廳俯瞰巴杜爾火山湖，接著前往德哥拉朗梯田（Tegalalang）欣賞層層梯田。</div>
+          <div><span class="tg">火山湖景觀</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">午餐</div>
+        <div class="ii">🍽</div>
+        <div class="ic">
+          <div class="in">🍽 午餐 · 金塔瑪尼火山景觀餐廳</div>
+          <div class="id">推薦：Puri Selera Kintamani 或 Lakeview Restaurant，俯瞰巴杜爾湖，景色壯觀</div>
+          <div><span class="tg">火山湖景</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">下午</div>
+        <div class="ii">🏠</div>
+        <div class="ic">
+          <div class="in">回烏布 Villa 休息</div>
+          <div class="id">今天消耗極大，下午務必補眠。不要安排其他行程。</div>
+          <div><span class="tg">強制休息</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">晚餐</div>
+        <div class="ii">🍽</div>
+        <div class="ic">
+          <div class="in">🍽 晚餐 · Bebek Tepi Sawah</div>
+          <div class="id">烏布知名稻田景觀餐廳，峇里島烤鴨料理，環境優美。或 Mozaic（Fine Dining，需提前訂位）</div>
+          <div><span class="tg">稻田夜景</span><span class="tb">烤鴨必吃</span></div>
+        </div>
+      </div>
+      <div class="htl">
+        <div class="hi">🌾</div>
+        <div>
+          <div class="hn">烏布 Villa</div>
+          <div class="hd">Ubud · 第 2 晚</div>
+          <div class="hp">含於 3 晚總價 TWD $47,000</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">🌿 文靜文化日</div>
+
+  <!-- DAY 4 -->
+  <div class="day" id="day-4">
+    <div class="dh">
+      <div class="dot ds"></div>
+      <div class="ddate">12/27 日</div>
+      <div class="dtit">🌿 烏布文靜 → 海神廟 → AYANA</div>
+      <div class="darr">▶</div>
+    </div>
+    <div class="db">
+      <div class="item">
+        <div class="it">早上</div>
+        <div class="ii">😴</div>
+        <div class="ic">
+          <div class="in">睡到飽 · 吃漂浮早餐</div>
+          <div class="id">昨天凌晨出發太累了，好好休息！部分烏布 villa 有泳池漂浮早餐體驗</div>
+          <div><span class="tg">慢活早晨</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">10:00</div>
+        <div class="ii">🚗</div>
+        <div class="ic">
+          <div class="in">出發</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">11:00</div>
+        <div class="ii">🌴</div>
+        <div class="ic">
+          <div class="in">梯田叢林鞦韆 → 特格嫩甘瀑布</div>
+          <div class="id">Tegalalang 叢林鞦韆俯瞰梯田（超網紅打卡點），接著前往特格嫩甘瀑布（Tegenungan Waterfall）。約 11:00–15:30 結束。</div>
+          <div><span class="tw">雨天叢林鞦韆可能暫停，請提前確認</span></div>
+          <div class="links">
+            <a class="lnk" href="https://www.klook.com/zh-TW/activity/6595-atv-quad-bike-adventure-bali/" target="_blank">→ Klook IDR 6,522/人</a>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">午餐</div>
+        <div class="ii">🍽</div>
+        <div class="ic">
+          <div class="in">🍽 午餐 · Tegalalang 梯田景觀咖啡廳</div>
+          <div class="id">推薦：Sari Organik（稻田中的有機餐廳）或 Kafe Luwak（咖啡+梯田景）</div>
+          <div><span class="tg">梯田景觀</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">15:00</div>
+        <div class="ii">🚗</div>
+        <div class="ic">
+          <div class="in">出發前往海神廟 Tanah Lot</div>
+          <div class="id">特格嫩→海神廟約 1.5–2 小時（週日下午交通）。必須 15:00 出發才能趕上日落！</div>
+          <div><span class="tr">15:00 前必須出發</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">17:00</div>
+        <div class="ii">🛕</div>
+        <div class="ic">
+          <div class="in">海神廟 Tanah Lot · Kecak 火舞表演 🔥</div>
+          <div class="id">海神廟入場 IDR 75,000/人（約 TWD $150）。Kecak 火舞表演 18:30–19:10，表演費 IDR 50,000/人。日落約 18:15，火舞+夕陽同場絕景！</div>
+          <div><span class="tg">⭐ 文化表演+夕陽</span><span class="tw">建議 16:00 前入場</span></div>
+          <div class="links">
+            <a class="lnk" href="https://idetrips.com/tanah-lot-temple-entrance-ticket/" target="_blank">→ 門票資訊</a>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">19:30</div>
+        <div class="ii">🏨</div>
+        <div class="ic">
+          <div class="in">AYANA Resort Jimbaran · Check-in</div>
+          <div class="id">海神廟→AYANA 約 30 分鐘，Check-in 後安頓行李</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">晚餐</div>
+        <div class="ii">🍽</div>
+        <div class="ic">
+          <div class="in">🍽 晚餐 · AYANA Rock Bar / Kisik</div>
+          <div class="id">AYANA 懸崖邊的 Rock Bar（需提前訂位，超人氣！）或 Kisik Bar &amp; Restaurant（海景）。備選：Jimbaran 海鮮燒烤沙灘餐廳（步行可達）</div>
+          <div><span class="tg">懸崖海景</span><span class="tw">Rock Bar 提前訂位</span></div>
+        </div>
+      </div>
+      <div class="htl">
+        <div class="hi">🏝</div>
+        <div>
+          <div class="hn">AYANA Resort Jimbaran</div>
+          <div class="hd">Jimbaran · 2晚 · 懸崖海景 · Rock Bar</div>
+          <div class="hp">TWD $89,000（6人 2晚總）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">☀️ 耍廢日</div>
+
+  <!-- DAY 5 -->
+  <div class="day" id="day-5">
+    <div class="dh">
+      <div class="dot dn"></div>
+      <div class="ddate">12/28 一</div>
+      <div class="dtit">🏖 AYANA 耍廢日</div>
+      <div class="darr">▶</div>
+    </div>
+    <div class="db">
+      <div class="item">
+        <div class="it">早上</div>
+        <div class="ii">🏊</div>
+        <div class="ic">
+          <div class="in">AYANA 無邊際泳池 · Spa</div>
+          <div class="id">享受 Resort 設施，AYANA Spa 可提前預約。泳池日景超美。</div>
+          <div><span class="tg">五星享受</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">午餐</div>
+        <div class="ii">🍽</div>
+        <div class="ic">
+          <div class="in">🍽 午餐 · Padi / AYANA 內用餐</div>
+          <div class="id">推薦 Padi Restaurant（海景），或泳池畔輕食。</div>
+          <div><span class="tg">海景</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">下午</div>
+        <div class="ii">🌊</div>
+        <div class="ic">
+          <div class="in">Rock Bar 日落 · 自由活動</div>
+          <div class="id">Rock Bar 日落時段（18:00–19:00）最美，提前 3 天訂位。或前往 Jimbaran 海灘散步。</div>
+          <div><span class="tw">Rock Bar 記得訂位</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">晚餐</div>
+        <div class="ii">🍽</div>
+        <div class="ic">
+          <div class="in">🍽 晚餐 · Jimbaran 海鮮沙灘燒烤 🦞</div>
+          <div class="id">峇里島必吃名物！在沙灘上用餐，現烤海鮮配夕陽（或夜景），通常有現場音樂演奏。推薦：Menega Cafe 或 Lia Cafe。包車司機可協助帶路，步行也可到。</div>
+          <div><span class="tg">⭐ 沙灘氛圍</span><span class="tb">現烤海鮮</span><span class="tg">現場音樂</span></div>
+        </div>
+      </div>
+      <div class="htl">
+        <div class="hi">🏝</div>
+        <div>
+          <div class="hn">AYANA Resort Jimbaran</div>
+          <div class="hd">Jimbaran · 第 2 晚</div>
+          <div class="hp">含於 2 晚總價 TWD $89,000</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">🏠 回程日</div>
+
+  <!-- DAY 6 -->
+  <div class="day" id="day-6">
+    <div class="dh">
+      <div class="dot dt"></div>
+      <div class="ddate">12/29 二</div>
+      <div class="dtit">✈️ 耍廢回家</div>
+      <div class="darr">▶</div>
+    </div>
+    <div class="db">
+      <div class="alert ar" style="margin:6px 0">🚨 15:45 班機！建議 13:30 前到機場，行李請前一晚打包好。</div>
+      <div class="item">
+        <div class="it">早上</div>
+        <div class="ii">🏊</div>
+        <div class="ic">
+          <div class="in">AYANA · 最後享受</div>
+          <div class="id">行李前晚打包好，早上再去游個泳或吃個好早餐</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">11:30</div>
+        <div class="ii">🧳</div>
+        <div class="ic">
+          <div class="in">準備 Check-out</div>
+          <div class="id">詢問 AYANA 是否可 early check-out 或行李寄放。Check-out 時間 12:00。</div>
+          <div><span class="tw">行李前晚打包</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">12:00</div>
+        <div class="ii">🚗</div>
+        <div class="ic">
+          <div class="in">出發前往 DPS 機場</div>
+          <div class="id">AYANA→機場約 20–30 分鐘，年底旺季預留 45 分鐘。</div>
+          <div><span class="to">年底旺季，預留充裕時間</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">12:45</div>
+        <div class="ii">🛫</div>
+        <div class="ic">
+          <div class="in">機場報到 · 國際線</div>
+          <div class="id">國際線建議 2.5 小時前報到，年底旺季排隊時間更長</div>
+          <div><span class="tr">13:15 前抵達最安全</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">15:45</div>
+        <div class="ii">✈️</div>
+        <div class="ic">
+          <div class="in">DPS 起飛 → 台灣</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="it">21:05</div>
+        <div class="ii">🏠</div>
+        <div class="ic">
+          <div class="in">台灣落地</div>
+          <div class="id">記得安排接送或叫車，深夜到達</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- PANEL: MAP                              -->
+<!-- ═══════════════════════════════════════ -->
+<div class="panel" id="map">
+  <div id="map-outer">
+    <div class="mhdr">
+      <div class="mtit">🗺 峇里島行程地圖</div>
+      <div class="mbtns">
+        <button class="mbtn on" id="mb-south">南部</button>
+        <button class="mbtn" id="mb-north">中北部</button>
+        <button class="mbtn" id="mb-all">全部</button>
+      </div>
+    </div>
+    <div id="gmap"><div id="gmap-loading" style="display:flex;align-items:center;justify-content:center;height:380px;color:#888;font-size:13px">載入地圖中…</div></div>
+    <div class="mleg">
+      <div class="mli"><div class="mld" style="background:#c0392b"></div>住宿</div>
+      <div class="mli"><div class="mld" style="background:#1a6b6b"></div>景點／活動</div>
+      <div class="mli"><div class="mld" style="background:#b5892a"></div>中北部</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- PANEL: FEASIBILITY                      -->
+<!-- ═══════════════════════════════════════ -->
+<div class="panel" id="feas">
+  <div class="alert ar">🔴 以下項目請立即處理，年底旺季容易額滿！</div>
+
+  <div class="sec">🔴 立即處理</div>
+
+  <div class="fc">
+    <div class="fh">🤿 藍夢島浮潛一日遊（Klook）<span class="fa">▶</span></div>
+    <div class="fb">
+      <span class="verd vr">⚠ 立即訂</span>
+      <div class="fr"><div class="fl">時間</div><div class="fv">09:00 沙努爾港出發，全天約 09:00–17:00</div></div>
+      <div class="fr"><div class="fl">月份</div><div class="fv">12月可出發，但海況較不穩定，Manta Bay 可能改備案地點</div></div>
+      <div class="fr"><div class="fl">天候</div><div class="fv">雨季，建議選有取消彈性的方案，出發前確認當天海況</div></div>
+      <div class="fr"><div class="fl">注意</div><div class="fv">帶暈船藥、防水袋、乾衣服，浮潛後直奔烏布，身體會很疲憊</div></div>
+      <div class="links">
+        <a class="lnk" href="https://www.klook.com/zh-TW/activity/21684-nusa-lembongan-manta-bay-snorkeling-experience/" target="_blank">→ Klook 訂票</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="fc">
+    <div class="fh">🌋 巴杜爾火山吉普車日出（Klook）<span class="fa">▶</span></div>
+    <div class="fb">
+      <span class="verd vr">⚠ 立即訂</span>
+      <div class="fr"><div class="fl">集合</div><div class="fv">04:30 巴杜爾山腳，從烏布出發需 02:30</div></div>
+      <div class="fr"><div class="fl">月份</div><div class="fv">12月雨季，日出能見度約 50%，雲霧感有另一種壯觀</div></div>
+      <div class="fr"><div class="fl">裝備</div><div class="fv">薄外套（山頂 12–18°C）、手電筒、防水外套</div></div>
+      <div class="fr"><div class="fl">選擇</div><div class="fv">已選：IDR 9,216/人（日出+熔岩+金塔瑪尼咖啡+德哥拉朗梯田）</div></div>
+      <div class="links">
+        <a class="lnk" href="https://www.klook.com/zh-TW/activity/22005-mount-batur-sunrise-experience-4wd-jeep-bali/" target="_blank">→ Klook 訂票 IDR 9,216</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="fc">
+    <div class="fh">🏨 AYANA Rock Bar 訂位<span class="fa">▶</span></div>
+    <div class="fb">
+      <span class="verd vr">⚠ 提前 3 天訂</span>
+      <div class="fr"><div class="fl">時間</div><div class="fv">開放至約 23:00，日落時段（18:00–19:00）最搶手</div></div>
+      <div class="fr"><div class="fl">建議</div><div class="fv">Check-in 當天（12/27）立即訂 12/28 晚餐或飲品座位</div></div>
+      <div class="fr"><div class="fl">消費</div><div class="fv">有最低消費，但景色絕對值得</div></div>
+      <div class="links">
+        <a class="lnk" href="https://www.ayana.com/bali/ayana-resort/rock-bar" target="_blank">→ AYANA 官網訂位</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">🟡 出發前處理</div>
+
+  <div class="fc">
+    <div class="fh">🌴 梯田叢林鞦韆 + 特格嫩甘瀑布<span class="fa">▶</span></div>
+    <div class="fb">
+      <span class="verd vo">⚠ 4週前訂</span>
+      <div class="fr"><div class="fl">時間</div><div class="fv">11:00–15:30，務必 15:00 前結束，趕赴海神廟</div></div>
+      <div class="fr"><div class="fl">天候</div><div class="fv">雨天叢林鞦韆可能暫停，確認取消政策</div></div>
+      <div class="fr"><div class="fl">注意</div><div class="fv">特格嫩甘瀑布入場費約 IDR 20,000/人，帶換洗衣物</div></div>
+      <div class="links">
+        <a class="lnk" href="https://www.klook.com/zh-TW/activity/6595-atv-quad-bike-adventure-bali/" target="_blank">→ Klook IDR 6,522/人</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="fc">
+    <div class="fh">🛕 海神廟 Tanah Lot · Kecak 火舞<span class="fa">▶</span></div>
+    <div class="fb">
+      <span class="verd vo">⚠ 提前確認</span>
+      <div class="fr"><div class="fl">開放</div><div class="fv">每日 07:00–19:00，無休館日</div></div>
+      <div class="fr"><div class="fl">門票</div><div class="fv">外國成人 IDR 75,000 / 人（約 TWD $150）</div></div>
+      <div class="fr"><div class="fl">Kecak</div><div class="fv">每日 18:30–19:10，表演費 IDR 50,000/人，需另購票</div></div>
+      <div class="fr"><div class="fl">建議</div><div class="fv">16:00 前入場，避免 16:00 後的大排隊。著薄長褲或備沙龍（入廟規定）</div></div>
+    </div>
+  </div>
+
+  <div class="fc">
+    <div class="fh">🍽 餐廳訂位建議<span class="fa">▶</span></div>
+    <div class="fb">
+      <span class="verd vo">建議提前訂</span>
+      <div class="fr"><div class="fl">Day 2</div><div class="fv">Locavore（烏布高人氣，建議 2 週前訂位）</div></div>
+      <div class="fr"><div class="fl">Day 3</div><div class="fv">Bebek Tepi Sawah 稻田烤鴨，無需太早訂</div></div>
+      <div class="fr"><div class="fl">Day 4</div><div class="fv">AYANA Rock Bar 需提前訂位</div></div>
+      <div class="fr"><div class="fl">Day 5</div><div class="fv">Jimbaran 海鮮沙灘餐廳（Menega Cafe）可現場，但旺季建議提前訂</div></div>
+    </div>
+  </div>
+
+  <div class="sec">🟢 無需擔心</div>
+
+  <div class="fc">
+    <div class="fh">💱 換匯建議<span class="fa">▶</span></div>
+    <div class="fb">
+      <span class="verd vg">✓ 到當地換</span>
+      <div class="fr"><div class="fl">機場</div><div class="fv">匯率差，只換少量（計程車/行李小費）</div></div>
+      <div class="fr"><div class="fl">推薦</div><div class="fv">水明漾 BCA ATM 或 Authorized Money Changer，匯率好很多</div></div>
+      <div class="fr"><div class="fl">帶現金</div><div class="fv">小攤、按摩店、廟宇門票多用現金，IDR 100K（約 TWD $200）面額最好用</div></div>
+    </div>
+  </div>
+
+  <div class="fc">
+    <div class="fh">🚗 包車司機安排<span class="fa">▶</span></div>
+    <div class="fb">
+      <span class="verd vg">✓ 建議提前安排</span>
+      <div class="fr"><div class="fl">建議</div><div class="fv">固定一位司機跑全程，6天包車估 TWD $15,000–20,000</div></div>
+      <div class="fr"><div class="fl">Day 3</div><div class="fv">凌晨 02:30 出發需與司機特別確認，部分司機需提前談好</div></div>
+      <div class="fr"><div class="fl">聯絡</div><div class="fv">WhatsApp 溝通，出發前一晚再次確認隔天行程</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- PANEL: BOOKING                          -->
+<!-- ═══════════════════════════════════════ -->
+<div class="panel" id="book">
+  <div class="todo">
+    <div class="todo-progress"><div class="todo-progress-bar" id="todo-progress-bar"></div></div>
+    <div class="todo-stats" id="todo-stats">已完成 0 / 10 項</div>
+    <div id="todo-container">
+
+      <div class="todo-section-title">🔴 立即處理</div>
+
+      <div class="todo-item-row" data-id="t1">
+        <div class="todo-cb" data-action="toggle"></div>
+        <div class="todo-text" data-action="toggle-from-text">
+          <b>訂藍夢島浮潛（Klook）</b>（12/25）<br>9:00 沙努爾港出發，含 Manta Bay + Crystal Bay<br>
+          <a href="https://www.klook.com/zh-TW/activity/21684-nusa-lembongan-manta-bay-snorkeling-experience/" style="color:var(--teal)" target="_blank">→ Klook 藍夢島浮潛</a>
+        </div>
+        <span class="todo-del" data-action="del-todo" title="刪除">×</span>
+      </div>
+
+      <div class="todo-item-row" data-id="t2">
+        <div class="todo-cb" data-action="toggle"></div>
+        <div class="todo-text" data-action="toggle-from-text">
+          <b>訂巴杜爾火山吉普車（Klook）IDR 9,216/人</b>（12/26）<br>04:30 集合，含日出+熔岩+金塔瑪尼咖啡+德哥拉朗梯田<br>
+          <a href="https://www.klook.com/zh-TW/activity/22005-mount-batur-sunrise-experience-4wd-jeep-bali/" style="color:var(--teal)" target="_blank">→ Klook 巴杜爾火山吉普</a>
+        </div>
+        <span class="todo-del" data-action="del-todo" title="刪除">×</span>
+      </div>
+
+      <div class="todo-item-row" data-id="t3">
+        <div class="todo-cb" data-action="toggle"></div>
+        <div class="todo-text" data-action="toggle-from-text">
+          <b>訂 AYANA Rock Bar 座位</b>（12/28）<br>日落時段超搶手，Check-in 當天立即預約<br>
+          <a href="https://www.ayana.com/bali/ayana-resort/rock-bar" style="color:var(--teal)" target="_blank">→ AYANA 官網</a>
+        </div>
+        <span class="todo-del" data-action="del-todo" title="刪除">×</span>
+      </div>
+
+      <div class="todo-item-row" data-id="t4">
+        <div class="todo-cb" data-action="toggle"></div>
+        <div class="todo-text" data-action="toggle-from-text">
+          <b>確認水明漾 Villa 住宿</b>（12/24–25）<br>1晚，近海灘
+        </div>
+        <span class="todo-del" data-action="del-todo" title="刪除">×</span>
+      </div>
+
+      <div class="todo-item-row" data-id="t5">
+        <div class="todo-cb" data-action="toggle"></div>
+        <div class="todo-text" data-action="toggle-from-text">
+          <b>確認烏布 Villa 住宿</b>（12/25–27）<br>3晚，建議選稻田景觀 villa
+        </div>
+        <span class="todo-del" data-action="del-todo" title="刪除">×</span>
+      </div>
+
+      <div class="todo-section-title">🟡 出發前處理</div>
+
+      <div class="todo-item-row" data-id="t6">
+        <div class="todo-cb" data-action="toggle"></div>
+        <div class="todo-text" data-action="toggle-from-text">
+          <b>訂梯田叢林鞦韆 + 特格嫩甘瀑布</b>（12/27）<br>IDR 6,522/人，11:00–15:30<br>
+          <a href="https://www.klook.com/zh-TW/activity/6595-atv-quad-bike-adventure-bali/" style="color:var(--teal)" target="_blank">→ Klook IDR 6,522/人</a>
+        </div>
+        <span class="todo-del" data-action="del-todo" title="刪除">×</span>
+      </div>
+
+      <div class="todo-item-row" data-id="t7">
+        <div class="todo-cb" data-action="toggle"></div>
+        <div class="todo-text" data-action="toggle-from-text">
+          <b>訂 Locavore 晚餐</b>（12/25 抵達烏布後）<br>烏布人氣名廚餐廳，建議提前 2 週訂位
+        </div>
+        <span class="todo-del" data-action="del-todo" title="刪除">×</span>
+      </div>
+
+      <div class="todo-item-row" data-id="t8">
+        <div class="todo-cb" data-action="toggle"></div>
+        <div class="todo-text" data-action="toggle-from-text">
+          <b>訂 Jimbaran 海鮮燒烤</b>（12/28）<br>推薦 Menega Cafe 或 Lia Cafe，旺季建議提前訂
+        </div>
+        <span class="todo-del" data-action="del-todo" title="刪除">×</span>
+      </div>
+
+      <div class="todo-item-row" data-id="t9">
+        <div class="todo-cb" data-action="toggle"></div>
+        <div class="todo-text" data-action="toggle-from-text">
+          <b>安排全程包車司機</b><br>固定司機 6 天，提前溝通 Day 3 凌晨 02:30 出發的特殊需求
+        </div>
+        <span class="todo-del" data-action="del-todo" title="刪除">×</span>
+      </div>
+
+      <div class="todo-item-row" data-id="t10">
+        <div class="todo-cb" data-action="toggle"></div>
+        <div class="todo-text" data-action="toggle-from-text">
+          <b>打包行李清單</b><br>防水袋、薄外套（火山用）、雨傘/雨衣、防曬、暈船藥、IDR 現金
+        </div>
+        <span class="todo-del" data-action="del-todo" title="刪除">×</span>
+      </div>
+
+    </div>
+    <div class="add-todo-row">
+      <input class="add-todo-input" id="new-todo-input" placeholder="新增待辦事項...">
+      <button class="add-todo-btn">新增</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- PANEL: COST                             -->
+<!-- ═══════════════════════════════════════ -->
+<div class="panel" id="cost">
+  <div class="cost-summary-block">
+    <div class="csr"><span>💰 預算合計</span><b id="cs-budget">計算中…</b></div>
+    <div class="csr"><span>✅ 實際已知</span><b id="cs-actual" style="color:var(--grn)">計算中…</b></div>
+    <div class="csr"><span>📊 剩餘預估</span><b id="cs-remain">計算中…</b></div>
+  </div>
+  <div class="cost-hint">💡 雙擊金額可編輯實際花費</div>
+
+  <!-- 機票 -->
+  <div class="cb">
+    <div class="ctit">✈️ 機票</div>
+    <div class="cr"><span>來回機票（6人）</span><span class="am cost-editable" data-key="c1" data-budget="84000">≈ TWD $84,000</span></div>
+    <div class="cr"><span style="font-weight:600">小計</span><span class="am" id="sub-ticket"></span></div>
+    <div class="cnote">每人約 TWD $14,000 來回</div>
+  </div>
+
+  <!-- 住宿 -->
+  <div class="cb">
+    <div class="ctit">🏨 住宿</div>
+    <div class="cr"><span>水明漾 Villa <span class="csub">12/24 · 1晚</span></span><span class="am cost-editable" data-key="c2" data-budget="9700">TWD $9,700</span></div>
+    <div class="cr"><span>烏布 Villa <span class="csub">12/25–27 · 3晚</span></span><span class="am cost-editable" data-key="c3" data-budget="47000">TWD $47,000</span></div>
+    <div class="cr"><span>AYANA Resort <span class="csub">12/27–29 · 2晚</span></span><span class="am cost-editable" data-key="c4" data-budget="89000">TWD $89,000</span></div>
+    <div class="cr"><span style="font-weight:600">小計</span><span class="am" id="sub-hotel"></span></div>
+    <div class="cnote">以上皆為 6 人總價</div>
+  </div>
+
+  <!-- 交通 -->
+  <div class="cb">
+    <div class="ctit">🚗 交通</div>
+    <div class="cr"><span>包車司機 6 天 <span class="csub">6人</span></span><span class="am cost-editable" data-key="c5" data-budget="18000">≈ TWD $18,000</span></div>
+    <div class="cr"><span style="font-weight:600">小計</span><span class="am" id="sub-trans"></span></div>
+    <div class="cnote">Day 3 凌晨出發可能需加收費用，與司機提前確認</div>
+  </div>
+
+  <!-- 活動 -->
+  <div class="cb">
+    <div class="ctit">🎡 活動門票</div>
+    <div class="cr"><span>藍夢島浮潛（6人）<span class="csub">12/25</span></span><span class="am cost-editable" data-key="c6" data-budget="12000">≈ TWD $12,000</span></div>
+    <div class="cr"><span>巴杜爾火山吉普 IDR 9,216×6 <span class="csub">12/26</span></span><span class="am cost-editable" data-key="c7" data-budget="13800">≈ TWD $13,800</span></div>
+    <div class="cr"><span>梯田叢林鞦韆 IDR 6,522×6 <span class="csub">12/27</span></span><span class="am cost-editable" data-key="c8" data-budget="9800">≈ TWD $9,800</span></div>
+    <div class="cr"><span>海神廟門票 IDR 75,000×6 <span class="csub">12/27</span></span><span class="am cost-editable" data-key="c9" data-budget="5400">≈ TWD $5,400</span></div>
+    <div class="cr"><span>Kecak 火舞 IDR 50,000×6 <span class="csub">12/27</span></span><span class="am cost-editable" data-key="c10" data-budget="3600">≈ TWD $3,600</span></div>
+    <div class="cr"><span style="font-weight:600">小計</span><span class="am" id="sub-act"></span></div>
+    <div class="cnote">IDR 匯率參考：1 TWD ≈ 500 IDR</div>
+  </div>
+
+  <!-- 餐飲 -->
+  <div class="cb">
+    <div class="ctit">🍽 餐飲（6人 6天估計）</div>
+    <div class="cr"><span>Day 1–2 水明漾/烏布 <span class="csub">4餐估</span></span><span class="am cost-editable" data-key="c11" data-budget="12000">≈ TWD $12,000</span></div>
+    <div class="cr"><span>Day 3–4 烏布/Jimbaran <span class="csub">4餐估</span></span><span class="am cost-editable" data-key="c12" data-budget="14000">≈ TWD $14,000</span></div>
+    <div class="cr"><span>Day 5–6 AYANA/回程 <span class="csub">3餐估</span></span><span class="am cost-editable" data-key="c13" data-budget="12000">≈ TWD $12,000</span></div>
+    <div class="cr"><span style="font-weight:600">小計</span><span class="am" id="sub-food"></span></div>
+    <div class="cnote">AYANA 內用餐較貴，Jimbaran 海鮮燒烤 6 人約 TWD $4,000–6,000</div>
+  </div>
+
+  <!-- 雜費 -->
+  <div class="cb">
+    <div class="ctit">🎁 按摩 / 購物 / 雜費</div>
+    <div class="cr"><span>按摩（每人每次約 TWD $500）</span><span class="am cost-editable" data-key="c14" data-budget="9000">≈ TWD $9,000</span></div>
+    <div class="cr"><span>購物 / 紀念品</span><span class="am cost-editable" data-key="c15" data-budget="6000">≈ TWD $6,000</span></div>
+    <div class="cr"><span style="font-weight:600">小計</span><span class="am" id="sub-misc"></span></div>
+  </div>
+
+  <!-- 總計 -->
+  <div class="ctotal">
+    <div class="ctr"><span>✈️ 機票</span><span class="am" id="gt-ticket"></span></div>
+    <div class="ctr"><span>🏨 住宿</span><span class="am" id="gt-hotel"></span></div>
+    <div class="ctr"><span>🚗 交通</span><span class="am" id="gt-trans"></span></div>
+    <div class="ctr"><span>🎡 活動</span><span class="am" id="gt-act"></span></div>
+    <div class="ctr"><span>🍽 餐飲</span><span class="am" id="gt-food"></span></div>
+    <div class="ctr"><span>🎁 雜費</span><span class="am" id="gt-misc"></span></div>
+    <div class="ctr grand"><span>6人旅費總計</span><span class="am" id="gt-total"></span></div>
+    <div class="ctr sub2"><span>平均每人</span><span class="am" id="gt-sub" style="font-size:12px"></span></div>
+  </div>
+  <div class="cnote" style="padding:0 4px">
+    ※ IDR 匯率以 1 TWD ≈ 500 IDR 估算<br>
+    ※ 費用為 6 人總計，平均每人約 TWD $54,000–58,000（不含個人消費）<br>
+    ※ 雙擊任何金額欄位可輸入實際花費
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SCRIPTS                                 -->
+<!-- ═══════════════════════════════════════ -->
+
+<script>
+(function(){
+'use strict';
+document.getElementById('tabs').addEventListener('click', function(e){
+  var el = e.target;
+  if(!el.classList.contains('tab')) return;
+  var name = el.getAttribute('data-tab');
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('on'); });
+  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('on'); });
+  el.classList.add('on');
+  document.getElementById(name).classList.add('on');
+  if(name === 'map') initGoogleMap();
+});
+document.getElementById('itin').addEventListener('click', function(e){
+  var dh = e.target.closest('.dh');
+  if(!dh) return;
+  var db = dh.nextElementSibling;
+  if(!db || !db.classList.contains('db')) return;
+  var open = db.style.display === 'block';
+  db.style.display = open ? 'none' : 'block';
+  var arr = dh.querySelector('.darr');
+  if(arr) arr.style.transform = open ? '' : 'rotate(90deg)';
+});
+document.getElementById('feas').addEventListener('click', function(e){
+  var fh = e.target.closest('.fh');
+  if(!fh) return;
+  var fb = fh.nextElementSibling;
+  if(!fb || !fb.classList.contains('fb')) return;
+  var open = fb.style.display === 'block';
+  fb.style.display = open ? 'none' : 'block';
+  var fa = fh.querySelector('.fa');
+  if(fa) fa.textContent = open ? '▶' : '▼';
+});
+
+var GMAP = null, GM_MARKERS = [], GM_INFOWINDOW = null;
+var GM_CURRENT = 'south', GM_INITED = false, GM_API_READY = false, GM_PENDING = false;
+window.gmapsReady = function(){ GM_API_READY=true; if(GM_PENDING){ GM_PENDING=false; initGoogleMap(); } };
+
+var PLACES = [
+  // 住宿
+  {n:'水明漾 Villa',       lat:-8.6920, lng:115.1580, type:'hotel', r:'south', d:'12/24–25', x:'Day 1 住宿 · 1晚 · TWD $9,700'},
+  {n:'烏布 Villa',         lat:-8.5069, lng:115.2624, type:'hotel', r:'north', d:'12/25–27', x:'Day 2–4 住宿 · 3晚 · TWD $47,000'},
+  {n:'AYANA Resort',       lat:-8.7877, lng:115.1597, type:'hotel', r:'south', d:'12/27–29', x:'Day 4–6 住宿 · 2晚 · TWD $89,000'},
+  // Day 1–2 南部
+  {n:'Mano Beach House',   lat:-8.6852, lng:115.1560, type:'act',   r:'south', d:'12/24 晚餐', x:'海邊夕陽餐廳 · 看夕陽吃飯'},
+  {n:'DPS 機場',           lat:-8.7482, lng:115.1675, type:'act',   r:'south', d:'12/24 抵達', x:'14:40 降落 · 出機場約 15:30'},
+  {n:'沙努爾港',           lat:-8.7136, lng:115.2612, type:'act',   r:'south', d:'12/25 09:00', x:'藍夢島出發點 · 07:15 從水明漾出發'},
+  {n:'藍夢島 Nusa Lembongan', lat:-8.6897, lng:115.4527, type:'act', r:'south', d:'12/25', x:'浮潛一日遊 · Manta Bay + Crystal Bay'},
+  // Day 3–4 中北部
+  {n:'巴杜爾火山',         lat:-8.2421, lng:115.3751, type:'act',   r:'north', d:'12/26 04:30', x:'吉普車日出 · 黑色熔岩 · IDR 9,216/人'},
+  {n:'金塔瑪尼景觀咖啡',   lat:-8.2500, lng:115.3800, type:'act',   r:'north', d:'12/26 早餐', x:'俯瞰巴杜爾湖火山景觀'},
+  {n:'德哥拉朗梯田',       lat:-8.4333, lng:115.2797, type:'act',   r:'north', d:'12/26 上午', x:'層層稻田梯田 · 打卡景點'},
+  {n:'特格嫩甘瀑布',       lat:-8.5767, lng:115.2901, type:'act',   r:'north', d:'12/27', x:'叢林鞦韆 + 瀑布 · IDR 6,522/人'},
+  // Day 4 海神廟
+  {n:'海神廟 Tanah Lot',   lat:-8.6215, lng:114.9997, type:'act',   r:'south', d:'12/27 17:00', x:'日落 + Kecak 火舞 18:30 · IDR 75,000/人'},
+  // Day 5
+  {n:'Jimbaran 海灘',      lat:-8.7835, lng:115.1621, type:'act',   r:'south', d:'12/28 晚餐', x:'海鮮沙灘燒烤 · Menega Cafe'},
+];
+
+var BOUNDS = {
+  south: {lat:{min:-9.0,max:-8.5}, lng:{min:114.8,max:115.6}, zoom:11},
+  north: {lat:{min:-8.6,max:-8.1}, lng:{min:115.1,max:115.5}, zoom:11},
+  all:   {lat:{min:-9.1,max:-8.0}, lng:{min:114.7,max:115.7}, zoom:10}
+};
+
+function markerColor(p){ return p.type==='hotel' ? '#c0392b' : (p.r==='south' ? '#1a6b6b' : '#b5892a'); }
+function markerSvg(color,isHotel){
+  var size=isHotel?28:22;
+  return {
+    url:'data:image/svg+xml;utf8,'+encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="'+size+'" height="'+size+'">'+
+      '<circle cx="'+(size/2)+'" cy="'+(size/2)+'" r="'+(size/2-1)+'" fill="'+color+'" stroke="white" stroke-width="2"/>'+
+      (isHotel?'<text x="'+(size/2)+'" y="'+(size/2+4)+'" text-anchor="middle" font-size="9" fill="white" font-family="sans-serif" font-weight="bold">H</text>':'')+
+      '</svg>'),
+    scaledSize:new google.maps.Size(size,size),
+    anchor:new google.maps.Point(size/2,size/2)
+  };
+}
+function tagHtml(p){
+  var color,bg,text;
+  if(p.type==='hotel'){color='#c0392b';bg='#fdecea';text='住宿';}
+  else if(p.r==='south'){color='#1a6b6b';bg='#e0f0ef';text='南部';}
+  else{color='#b5892a';bg='#fef3e2';text='中北部';}
+  return '<span class="gm-iw-tag" style="background:'+bg+';color:'+color+';border:1px solid '+color+'44">'+text+'</span>';
+}
+function infoContent(p){
+  return '<div class="gm-iw"><div class="gm-iw-name">'+p.n+'</div><div class="gm-iw-date">'+p.d+'</div><div class="gm-iw-desc">'+p.x+'</div>'+tagHtml(p)+'</div>';
+}
+function initGoogleMap(){
+  if(!GM_API_READY){GM_PENDING=true;return;}
+  if(GM_INITED){showMap(GM_CURRENT);return;}
+  GM_INITED=true;
+  var loadingEl=document.getElementById('gmap-loading');
+  if(loadingEl)loadingEl.style.display='none';
+  GMAP=new google.maps.Map(document.getElementById('gmap'),{
+    zoom:10,center:{lat:-8.5,lng:115.2},
+    mapTypeControl:false,streetViewControl:false,fullscreenControl:false,
+    gestureHandling:'cooperative',
+    styles:[
+      {featureType:'water',elementType:'geometry',stylers:[{color:'#a8d4e8'}]},
+      {featureType:'landscape',elementType:'geometry',stylers:[{color:'#f0ece3'}]},
+      {featureType:'road',elementType:'geometry',stylers:[{color:'#e0d8cc'}]},
+      {featureType:'road',elementType:'labels',stylers:[{visibility:'simplified'}]},
+      {featureType:'poi',elementType:'labels',stylers:[{visibility:'off'}]},
+      {featureType:'transit',elementType:'labels',stylers:[{visibility:'off'}]},
+      {featureType:'administrative',elementType:'labels.text.fill',stylers:[{color:'#888'}]}
+    ]
+  });
+  GM_INFOWINDOW=new google.maps.InfoWindow({maxWidth:220});
+  PLACES.forEach(function(p){
+    var marker=new google.maps.Marker({
+      position:{lat:p.lat,lng:p.lng},map:GMAP,
+      icon:markerSvg(markerColor(p),p.type==='hotel'),
+      title:p.n,visible:false
+    });
+    marker.placeData=p;
+    marker.addListener('click',function(){
+      GM_INFOWINDOW.setContent(infoContent(p));
+      GM_INFOWINDOW.open(GMAP,marker);
+    });
+    GM_MARKERS.push(marker);
+  });
+  showMap('south');
+}
+window.showMap=function(region){
+  GM_CURRENT=region;
+  ['south','north','all'].forEach(function(k){
+    var b=document.getElementById('mb-'+k);
+    if(b)b.classList.toggle('on',k===region);
+  });
+  if(!GMAP)return;
+  if(GM_INFOWINDOW)GM_INFOWINDOW.close();
+  GM_MARKERS.forEach(function(m){ m.setVisible(region==='all'||m.placeData.r===region); });
+  var b=BOUNDS[region];
+  GMAP.fitBounds(new google.maps.LatLngBounds(
+    new google.maps.LatLng(b.lat.min,b.lng.min),
+    new google.maps.LatLng(b.lat.max,b.lng.max)
+  ));
+};
+})();
+</script>
+
+<script>
+var itinEditMode=false,addItemOpen=false,dragSrc=null,costData={};
+function $id(id){return document.getElementById(id);}
+
+function toggleAddItemMode(){
+  addItemOpen=!addItemOpen;
+  var form=$id('add-item-form'),btn=$id('add-item-btn');
+  if(!form||!btn)return;
+  form.classList.toggle('show',addItemOpen);
+  btn.textContent=addItemOpen?'✕ 關閉':'＋ 新增行程';
+  if(addItemOpen){populateDaySelect();var ni=$id('ni-name');if(ni)ni.focus();}
+}
+function populateDaySelect(){
+  var sel=$id('ni-day-select');if(!sel)return;sel.innerHTML='';
+  document.querySelectorAll('#itin .day').forEach(function(day,i){
+    var ddate=day.querySelector('.ddate'),dtit=day.querySelector('.dtit'),opt=document.createElement('option');
+    opt.value=day.id||('day-'+i);
+    opt.textContent=(ddate?ddate.textContent.trim():'')+' '+(dtit?dtit.textContent.trim().slice(0,20):'');
+    sel.appendChild(opt);
+  });
+}
+function addNewItem(){
+  var time=($id('ni-time')?$id('ni-time').value:'').trim();
+  var icon=($id('ni-icon')?$id('ni-icon').value:'').trim()||'📍';
+  var name=($id('ni-name')?$id('ni-name').value:'').trim();
+  var desc=($id('ni-desc')?$id('ni-desc').value:'').trim();
+  var dayId=$id('ni-day-select')?$id('ni-day-select').value:'';
+  if(!name){alert('請輸入行程名稱');return;}
+  var day=$id(dayId);if(!day){alert('找不到指定天數');return;}
+  var db=day.querySelector('.db');
+  if(db&&db.style.display!=='block'){db.style.display='block';var arr=day.querySelector('.darr');if(arr)arr.style.transform='rotate(90deg)';}
+  var item=document.createElement('div');item.className='item';
+  item.innerHTML='<div class="it">'+(time||'')+'</div><div class="ii">'+icon+'</div><div class="ic"><div class="in">'+name+'</div>'+(desc?'<div class="id">'+desc+'</div>':'')+'</div>';
+  if(db)db.appendChild(item);
+  item.style.background='#e8f4ee';setTimeout(function(){item.style.background='';},1000);
+  if($id('ni-time'))$id('ni-time').value='';
+  if($id('ni-icon'))$id('ni-icon').value='';
+  if($id('ni-name'))$id('ni-name').value='';
+  if($id('ni-desc'))$id('ni-desc').value='';
+  if($id('ni-name'))$id('ni-name').focus();
+}
+function toggleItinEdit(){
+  itinEditMode=!itinEditMode;
+  var itin=$id('itin'),btn=$id('itin-edit-btn');
+  if(!itin||!btn)return;
+  itin.classList.toggle('itin-edit-mode',itinEditMode);
+  btn.textContent=itinEditMode?'✅ 完成編輯':'✏️ 編輯排序';
+  btn.style.background=itinEditMode?'var(--grn)':'';
+  btn.style.color=itinEditMode?'#fff':'';
+  document.querySelectorAll('#itin .day').forEach(function(day){
+    var existing=day.querySelector('.day-edit-btns');
+    if(itinEditMode&&!existing){
+      var btns=document.createElement('div');btns.className='day-edit-btns';
+      var handle=document.createElement('span');handle.className='day-move';handle.title='拖曳排序';handle.textContent='⠿';
+      var delBtn=document.createElement('button');delBtn.className='day-del-btn';delBtn.setAttribute('data-action','del-day');delBtn.textContent='刪除';
+      btns.appendChild(handle);btns.appendChild(delBtn);
+      var dh=day.querySelector('.dh');if(dh){var arr=dh.querySelector('.darr');arr?dh.insertBefore(btns,arr):dh.appendChild(btns);}
+    }else if(!itinEditMode&&existing){existing.remove();}
+    if(itinEditMode){
+      day.setAttribute('draggable','true');
+      day.ondragstart=function(){dragSrc=this;this.classList.add('dragging');event.dataTransfer.effectAllowed='move';};
+      day.ondragover=function(e){e.preventDefault();e.dataTransfer.dropEffect='move';document.querySelectorAll('#itin .day').forEach(function(d){d.classList.remove('drag-over');});this.classList.add('drag-over');return false;};
+      day.ondrop=function(e){e.stopPropagation();if(dragSrc&&dragSrc!==this){var p=this.parentNode,si=Array.from(p.children).indexOf(dragSrc),ti=Array.from(p.children).indexOf(this);p.insertBefore(dragSrc,si<ti?this.nextSibling:this);}return false;};
+      day.ondragend=function(){this.classList.remove('dragging');document.querySelectorAll('#itin .day').forEach(function(d){d.classList.remove('drag-over');});dragSrc=null;};
+    }else{day.removeAttribute('draggable');day.ondragstart=day.ondragover=day.ondrop=day.ondragend=null;}
+  });
+}
+function delDay(btn){
+  if(!confirm('確定要刪除這一天的行程？'))return;
+  var day=btn.closest('.day');if(!day)return;
+  day.style.transition='opacity .25s';day.style.opacity='0';
+  setTimeout(function(){day.remove();},250);
+}
+function toggleTodo(cb){
+  if(!cb)return;cb.classList.toggle('done');
+  var txt=cb.nextElementSibling;
+  if(txt&&txt.classList.contains('todo-text'))txt.classList.toggle('done',cb.classList.contains('done'));
+  updateProgress();saveState();
+}
+function delTodo(btn){
+  var row=btn.closest('.todo-item-row');if(!row)return;
+  row.style.transition='opacity .2s';row.style.opacity='0';
+  setTimeout(function(){row.remove();updateProgress();saveState();},200);
+}
+function addTodo(){
+  var input=$id('new-todo-input');if(!input)return;
+  var text=input.value.trim();if(!text)return;
+  var row=document.createElement('div');row.className='todo-item-row';row.setAttribute('data-id','custom-'+Date.now());
+  var cb=document.createElement('div');cb.className='todo-cb';cb.setAttribute('data-action','toggle');
+  var tx=document.createElement('div');tx.className='todo-text';tx.setAttribute('data-action','toggle-from-text');tx.textContent=text;
+  var dl=document.createElement('span');dl.className='todo-del';dl.setAttribute('data-action','del-todo');dl.title='刪除';dl.textContent='×';
+  row.appendChild(cb);row.appendChild(tx);row.appendChild(dl);
+  var container=$id('todo-container');if(container)container.appendChild(row);
+  input.value='';updateProgress();saveState();
+}
+function updateProgress(){
+  var all=document.querySelectorAll('#todo-container .todo-item-row').length;
+  var done=document.querySelectorAll('#todo-container .todo-cb.done').length;
+  var pct=all>0?Math.round(done/all*100):0;
+  var bar=$id('todo-progress-bar'),stats=$id('todo-stats');
+  if(bar)bar.style.width=pct+'%';
+  if(stats)stats.textContent='已完成 '+done+' / '+all+' 項 ('+pct+'%)';
+}
+
+var COST_GROUPS={
+  ticket:['c1'],
+  hotel: ['c2','c3','c4'],
+  trans: ['c5'],
+  act:   ['c6','c7','c8','c9','c10'],
+  food:  ['c11','c12','c13'],
+  misc:  ['c14','c15']
+};
+
+function startEdit(el){
+  if(!el||el.querySelector('input'))return;
+  var key=el.getAttribute('data-key'),budget=parseInt(el.getAttribute('data-budget'))||0;
+  var current=costData[key]!==undefined?costData[key]:budget;
+  var orig=el.textContent;el.setAttribute('data-orig',orig);
+  var input=document.createElement('input');input.type='text';input.className='cost-edit-input';
+  input.value=current;input.placeholder=budget;var committed=false;
+  el.textContent='';el.appendChild(input);input.focus();input.select();
+  input.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();if(!committed){committed=true;commitEdit(el,input,key,budget);}}
+    if(e.key==='Escape'){committed=true;cancelEdit(el);}
+  });
+  input.addEventListener('blur',function(){if(!committed){committed=true;commitEdit(el,input,key,budget);}});
+}
+function commitEdit(el,input,key,budget){
+  var raw=input.value.replace(/[,$TWD ≈]/g,'').trim(),val=parseInt(raw);
+  if(!isNaN(val)&&val>=0){
+    costData[key]=val;el.textContent='TWD $'+val.toLocaleString();
+    if(val!==budget){el.classList.add('cost-actual');el.title='原預算: TWD $'+budget.toLocaleString();}
+    else{el.classList.remove('cost-actual');el.title='';}
+  }else{el.textContent=el.getAttribute('data-orig')||('≈ TWD $'+budget.toLocaleString());delete costData[key];el.classList.remove('cost-actual');}
+  recalcCosts();saveState();
+}
+function cancelEdit(el){el.textContent=el.getAttribute('data-orig')||'';}
+function getVal(key){
+  if(costData[key]!==undefined)return costData[key];
+  var el=document.querySelector('[data-key="'+key+'"]');
+  return el?(parseInt(el.getAttribute('data-budget'))||0):0;
+}
+function groupSum(keys){return keys.reduce(function(s,k){return s+getVal(k);},0);}
+function fmt(n){return 'TWD $'+n.toLocaleString();}
+function recalcCosts(){
+  var g=COST_GROUPS;
+  var ticket=groupSum(g.ticket),hotel=groupSum(g.hotel),trans=groupSum(g.trans);
+  var act=groupSum(g.act),food=groupSum(g.food),misc=groupSum(g.misc);
+  var sub=hotel+trans+act+food+misc,total=ticket+sub;
+  var setT=function(id,val){var e=$id(id);if(e)e.textContent=fmt(val);};
+  setT('sub-ticket',ticket);setT('sub-hotel',hotel);setT('sub-trans',trans);
+  setT('sub-act',act);setT('sub-food',food);setT('sub-misc',misc);
+  setT('gt-ticket',ticket);setT('gt-hotel',hotel);setT('gt-trans',trans);
+  setT('gt-act',act);setT('gt-food',food);setT('gt-misc',misc);
+  setT('gt-sub',sub);setT('gt-total',total);
+  var actualSum=Object.keys(costData).reduce(function(s,k){return s+(costData[k]!==undefined?costData[k]:0);},0);
+  setT('cs-budget',total);setT('cs-actual',actualSum);setT('cs-remain',total-actualSum);
+  // 每人平均
+  var perPerson=Math.round(total/6);
+  var pp=$id('gt-sub');if(pp)pp.textContent='每人約 '+fmt(perPerson);
+}
+
+var FB_URL='https://nz-trip-2026-dd942-default-rtdb.asia-southeast1.firebasedatabase.app';
+var FB_NODE='bali-2026';
+var IS_EDITOR=false;
+(function(){try{IS_EDITOR=window.location.search.indexOf('edit=1')>-1||localStorage.getItem(FB_NODE+'_editor')==='1';}catch(e){}})();
+
+function fbWrite(data){
+  if(!IS_EDITOR)return Promise.resolve();
+  return fetch(FB_URL+'/'+FB_NODE+'.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+    .catch(function(e){console.warn('Firebase write failed:',e);});
+}
+function fbRead(){
+  return fetch(FB_URL+'/'+FB_NODE+'.json').then(function(r){return r.json();})
+    .catch(function(e){console.warn('Firebase read failed:',e);return null;});
+}
+function collectState(){
+  var todos={};
+  document.querySelectorAll('#todo-container .todo-item-row').forEach(function(row){
+    var id=row.getAttribute('data-id');if(id)todos[id]={done:!!row.querySelector('.todo-cb.done')};
+  });
+  return{todos:todos,costs:costData,ts:Date.now()};
+}
+function applyState(state){
+  if(!state)return;
+  var todos=state.todos||{};
+  document.querySelectorAll('#todo-container .todo-item-row').forEach(function(row){
+    var id=row.getAttribute('data-id');if(!id||!todos[id])return;
+    var cb=row.querySelector('.todo-cb'),tx=row.querySelector('.todo-text'),done=todos[id].done;
+    if(cb)cb.classList.toggle('done',done);if(tx)tx.classList.toggle('done',done);
+  });
+  var costs=state.costs||{};
+  Object.keys(costs).forEach(function(key){
+    var val=costs[key];if(val===undefined||val===null)return;
+    costData[key]=val;
+    var el=document.querySelector('[data-key="'+key+'"]');if(!el)return;
+    var budget=parseInt(el.getAttribute('data-budget'))||0;
+    el.textContent='TWD $'+val.toLocaleString();
+    if(val!==budget){el.classList.add('cost-actual');el.title='原預算: TWD $'+budget.toLocaleString();}
+    else{el.classList.remove('cost-actual');el.title='';}
+  });
+  recalcCosts();updateProgress();
+}
+function saveState(){
+  var state=collectState();
+  try{localStorage.setItem(FB_NODE+'_todos',JSON.stringify(state.todos));localStorage.setItem(FB_NODE+'_costs',JSON.stringify(state.costs));}catch(e){}
+  fbWrite(state);
+}
+function loadState(){
+  try{
+    var localState={todos:JSON.parse(localStorage.getItem(FB_NODE+'_todos')||'{}'),costs:JSON.parse(localStorage.getItem(FB_NODE+'_costs')||'{}')};
+    applyState(localState);
+  }catch(e){}
+  fbRead().then(function(fbState){
+    if(!fbState)return;
+    var localTs=0;try{localTs=parseInt(localStorage.getItem(FB_NODE+'_ts')||'0');}catch(e){}
+    var fbTs=fbState.ts||0;
+    if(fbTs>=localTs){
+      applyState(fbState);
+      try{localStorage.setItem(FB_NODE+'_todos',JSON.stringify(fbState.todos||{}));localStorage.setItem(FB_NODE+'_costs',JSON.stringify(fbState.costs||{}));localStorage.setItem(FB_NODE+'_ts',String(fbTs));}catch(e){}
+    }
+    showSyncStatus(IS_EDITOR?'✅ 已同步':'👁 唯讀模式');
+  });
+}
+function showSyncStatus(msg){var el=document.getElementById('sync-status');if(!el)return;el.textContent=msg;el.style.opacity='1';setTimeout(function(){el.style.opacity='0';},2500);}
+
+document.addEventListener('DOMContentLoaded',function(){
+  var addItemBtn=$id('add-item-btn');if(addItemBtn)addItemBtn.addEventListener('click',toggleAddItemMode);
+  var editBtn=$id('itin-edit-btn');if(editBtn)editBtn.addEventListener('click',toggleItinEdit);
+  var form=$id('add-item-form');
+  if(form){
+    var saveBtn=form.querySelector('.eb-save'),cancelBtn=form.querySelector('.eb-cancel');
+    if(saveBtn)saveBtn.addEventListener('click',addNewItem);
+    if(cancelBtn)cancelBtn.addEventListener('click',toggleAddItemMode);
+    ['ni-name','ni-desc','ni-time','ni-icon'].forEach(function(id){
+      var el=$id(id);if(el)el.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();addNewItem();}});
+    });
+  }
+  var mbS=$id('mb-south'),mbN=$id('mb-north'),mbA=$id('mb-all');
+  if(mbS)mbS.addEventListener('click',function(){if(typeof showMap==='function')showMap('south');});
+  if(mbN)mbN.addEventListener('click',function(){if(typeof showMap==='function')showMap('north');});
+  if(mbA)mbA.addEventListener('click',function(){if(typeof showMap==='function')showMap('all');});
+  var todoContainer=$id('todo-container');
+  if(todoContainer){
+    todoContainer.addEventListener('click',function(e){
+      var action=e.target.getAttribute('data-action');
+      if(!action){var parent=e.target.parentElement;action=parent?parent.getAttribute('data-action'):null;}
+      if(action==='toggle'){var cb=e.target.classList.contains('todo-cb')?e.target:e.target.querySelector('.todo-cb');if(!cb&&e.target.closest('.todo-cb'))cb=e.target.closest('.todo-cb');if(cb)toggleTodo(cb);}
+      else if(action==='toggle-from-text'){var row=e.target.closest('.todo-item-row');if(row){var cb=row.querySelector('.todo-cb');if(cb)toggleTodo(cb);}}
+      else if(action==='del-todo'){delTodo(e.target.closest('.todo-del')||e.target);}
+    });
+  }
+  var addTodoBtn=document.querySelector('#book .add-todo-btn');
+  if(addTodoBtn)addTodoBtn.addEventListener('click',addTodo);
+  var todoInput=$id('new-todo-input');
+  if(todoInput)todoInput.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();addTodo();}});
+  var costPanel=$id('cost');
+  if(costPanel){
+    costPanel.addEventListener('dblclick',function(e){var el=e.target.closest('.cost-editable');if(el)startEdit(el);});
+    var touchTimer=null;
+    costPanel.addEventListener('touchstart',function(e){var el=e.target.closest('.cost-editable');if(!el)return;touchTimer=setTimeout(function(){startEdit(el);},600);},{passive:true});
+    costPanel.addEventListener('touchend',function(){if(touchTimer){clearTimeout(touchTimer);touchTimer=null;}});
+  }
+  var itinEl=$id('itin');
+  if(itinEl){
+    itinEl.addEventListener('click',function(e){
+      var btn=e.target.closest('[data-action="del-day"]');if(btn){e.stopPropagation();delDay(btn);}
+      var delItem=e.target.closest('[data-action="del-item"]');if(delItem){e.stopPropagation();var item=delItem.closest('.item');if(item)item.remove();}
+    });
+  }
+  loadState();updateProgress();recalcCosts();
+  if(IS_EDITOR){var eb=document.getElementById('editor-bar');if(eb)eb.style.display='flex';}
+  else{
+    var vb=document.getElementById('viewer-bar');if(vb)vb.style.display='flex';
+    document.querySelectorAll('#add-item-btn,#itin-edit-btn').forEach(function(b){b.style.opacity='0.35';b.style.pointerEvents='none';b.title='唯讀模式，無法編輯';});
+    var cp=document.getElementById('cost');if(cp)cp.style.pointerEvents='none';
+    var tc=document.getElementById('todo-container');if(tc)tc.style.pointerEvents='none';
+    var ata=document.querySelector('#book .add-todo-btn');if(ata)ata.parentElement.style.display='none';
+  }
+});
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-HJV3XRaP_68Pk-BdaMmyheiHJhl332U&callback=gmapsReady&language=zh-TW"></script>
+
+</body>
+</html>
