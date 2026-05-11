@@ -242,6 +242,48 @@ html, body {
 .c-time { background: linear-gradient(135deg, #2dd4bf, #8b5cf6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 .c-name { color: var(--txt); }
 .c-desc { color: var(--txt2); }
+.dinner-opts { margin-top: 8px; }
+.dinner-opts summary {
+  cursor: pointer; list-style: none;
+  padding: 7px 11px;
+  background: rgba(45,212,191,0.08);
+  border: 1px solid rgba(45,212,191,0.22);
+  border-radius: 7px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  user-select: none;
+  transition: background 0.18s, border-color 0.18s;
+}
+.dinner-opts summary::-webkit-details-marker { display: none; }
+.dinner-opts summary:hover { background: rgba(45,212,191,0.12); }
+.dinner-opts[open] summary {
+  background: rgba(45,212,191,0.14);
+  border-color: rgba(45,212,191,0.38);
+}
+.dinner-opts .opt {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: 8px;
+  padding: 10px 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.dinner-opts .opt:last-child { border-bottom: none; }
+.dinner-opts .opt-n { color: var(--accent); font-weight: 700; font-size: 14px; }
+.dinner-opts .opt b { color: var(--txt); font-size: 13px; }
+.dinner-opts .opt-tag { color: var(--txt3); font-size: 11px; margin-left: 4px; }
+.dinner-opts .opt-meta { font-size: 11px; color: var(--txt2); margin-top: 3px; line-height: 1.5; }
+.dinner-opts .opt-link {
+  display: inline-block;
+  margin-top: 6px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.dinner-opts .opt-link:hover { opacity: 0.75; }
 
 .c-tag { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 10px; background: var(--glass2); color: var(--txt2); border: 1px solid var(--border); font-weight: 500; margin: 4px 4px 0 0; }
 .c-tag.tg { background: rgba(52,211,153,0.12); color: var(--grn); border-color: rgba(52,211,153,0.25); }
@@ -496,60 +538,7 @@ html, body {
 
 <div class="bs-todo" data-id="t11">
   <div class="bs-todo-cb"></div>
-  <div class="bs-todo-text"><b>💆 Bodyworks Spa 訂位（6人）</b>（12/24 晚 <strong style="color:#f87171">21:00</strong>）<br>水明漾 · 60min Balinese IDR 300K/人<br><strong style="color:#f87171">⚠ 必須確認 21:00 可訂 60 分鐘</strong>（22:00 關門）<br>☎ +62 361 733317</div>
-  <span class="bs-todo-del">×</span>
-</div>
-
-<div class="bs-todo" data-id="t12">
-  <div class="bs-todo-cb"></div>
-  <div class="bs-todo-text"><b>💆 Jaens Spa 訂位（6人）</b>（12/26 下午 14:00）<br>烏布 Pengosekan · 90min IDR 280K+/人 · 火山日出後直接過去<br>☎ +62 811-3990-5109</div>
-  <span class="bs-todo-del">×</span>
-</div>
-
-<div class="bs-section-title">🍽️ 餐廳訂位</div>
-
-<div class="bs-todo" data-id="t13">
-  <div class="bs-todo-cb"></div>
-  <div class="bs-todo-text"><b>De Jukung Resto · Tanah Lot</b>（12/24 火舞後 19:00 晚餐）<br>Surya Mandala 旁邊 · 海景餐廳 · 45 分鐘內結束（後面要趕 Bodyworks）</div>
-  <span class="bs-todo-del">×</span>
-</div>
-
-<div class="bs-todo" data-id="t14">
-  <div class="bs-todo-cb"></div>
-  <div class="bs-todo-text"><b>烏布晚餐（Locavore / Bridges / Kafe Ubud）</b>（12/25）<br>Locavore 至少 1 個月前訂，Bridges 一般 1 週前夠</div>
-  <span class="bs-todo-del">×</span>
-</div>
-
-<div class="bs-todo" data-id="t15">
-  <div class="bs-todo-cb"></div>
-  <div class="bs-todo-text"><b>訂 AYANA Rock Bar 座位</b>（12/27 / 12/28）<br>日落時段超搶手<br><a href="https://www.ayana.com/bali/ayana-resort/rock-bar" target="_blank">→ AYANA 官網</a></div>
-  <span class="bs-todo-del">×</span>
-</div>
-
-<div class="bs-todo" data-id="t16">
-  <div class="bs-todo-cb"></div>
-  <div class="bs-todo-text"><b>訂 Jimbaran 海鮮燒烤</b>（12/28）<br>推薦 Menega Cafe 或 Lia Cafe</div>
-  <span class="bs-todo-del">×</span>
-</div>
-
-<div class="bs-todo" data-id="t17">
-  <div class="bs-todo-cb"></div>
-  <div class="bs-todo-text"><b>Bebek Tepi Sawah 訂位</b>（12/26 晚餐）<br>稻田景觀烤鴨餐廳</div>
-  <span class="bs-todo-del">×</span>
-</div>
-    </div>
-    <div class="bs-add-row">
-      <input class="bs-add-input" id="bs-add-input" placeholder="新增待辦事項...">
-      <select class="bs-add-cat" id="bs-add-cat">
-        <option value="auto">🪄 自動分類</option>
-        <option value="hotel">🏨 住宿</option>
-        <option value="transport">✈️ 交通</option>
-        <option value="activity">🎡 活動</option>
-        <option value="restaurant">🍽️ 餐廳訂位</option>
-      </select>
-      <button class="bs-add-btn" id="bs-add-btn">新增</button>
-    </div>
-  </div>
+  
 </div>
 
 <div class="sheet" id="cost-sheet">
@@ -604,7 +593,7 @@ html, body {
 
 <div class="cs-group">
   <div class="cs-group-title">💆 雜費</div>
-  <div class="cs-row"><span>💆 Bodyworks Spa（Day 1）</span><span class="cs-amount cs-edit" data-key="c16" data-budget="3600">≈ TWD $3,600</span></div>
+  
   <div class="cs-row"><span>💆 Jaens Spa（Day 3）</span><span class="cs-amount cs-edit" data-key="c17" data-budget="4560">≈ TWD $4,560</span></div>
   <div class="cs-row"><span>💆 AYANA Spa / 預備</span><span class="cs-amount cs-edit" data-key="c18" data-budget="4000">≈ TWD $4,000</span></div>
   <div class="cs-row"><span>🎁 購物 / 紀念品</span><span class="cs-amount cs-edit" data-key="c19" data-budget="6000">≈ TWD $6,000</span></div>
@@ -656,7 +645,7 @@ var TRIP_DATA = [
   {
     id: "day-1",
     date: "12/24 四",
-    title: "🛬 抵達 → 海神廟火舞 → Bodyworks",
+    title: "🛬 抵達 → 海神廟火舞 → Canggu 晚餐",
     items: [
       {time:"09:10", icon:"✈️", name:"桃園 TPE 起飛", desc:"飛行約 5.5 小時，峇里島時間慢台灣 1 小時", link:""},
       {time:"14:40", icon:"🛬", name:"DPS 峇里島機場降落", desc:"入境 → 領行李 → 換匯（少量應急）。⚠ 聖誕節塞車。出機場後直接前往 Tanah Lot，行李留車上司機顧。", link:""},
@@ -664,11 +653,11 @@ var TRIP_DATA = [
       {time:"16:30", icon:"📸", name:"抵達 Tanah Lot · 拍照", desc:"海上廟、市集區。45 分鐘拍夠標誌性景照。不深度逛廟區（時間不夠），重點拍照即可。入廟費 IDR 75K/人。", link:""},
       {time:"17:30", icon:"🎫", name:"入場 Surya Mandala 火舞場", desc:"距海神廟約 100 公尺。位置先到先選，搶前排海景位。", link:""},
       {time:"18:00", icon:"🔥", name:"🔥 海神廟 Kecak 火舞 + 夕陽剪影", desc:"⭐ 行程亮點！50–100 名男聲齊唱演繹羅摩衍那史詩，背景是夕陽下的海神廟剪影 + 海浪聲。表演約 60 分鐘。Surya Mandala Cultural Park · IDR 100K/人。", link:"https://www.kkday.com/zh-tw/product/546495"},
-      {time:"19:00", icon:"🍽", name:"快速晚餐 · De Jukung Resto", desc:"就在 Surya Mandala 旁邊，海景餐廳。火舞剛結束氣氛仍熱。45 分鐘內結束（後面要趕 Bodyworks）。", link:""},
-      {time:"19:45", icon:"🚗", name:"出發回水明漾", desc:"Tanah Lot → Bodyworks 約 60 分鐘（夜間路況稍順）", link:""},
-      {time:"21:00", icon:"💆", name:"Bodyworks Spa · 60 分鐘 Balinese Massage", desc:"⚠ Bodyworks 22:00 關門，務必事前確認 21:00 可訂 60 分鐘。Petitenget 區。IDR 300K/人。☎ +62 361 733317", link:"https://www.bodyworksbali.com/"},
-      {time:"22:00", icon:"🏠", name:"Check-in Villa Jerami & Spa", desc:"距 Bodyworks 約 5 分鐘車程。直接洗澡睡覺，明天 07:15 出發沙努爾。", link:""},
-      {time:"22:30", icon:"😴", name:"入睡", desc:"充實但累的一天結束 ✨", link:""}
+      {time:"19:15", icon:"🚗", name:"出發回 Canggu/Seminyak", desc:"Tanah Lot → Canggu 約 40 分鐘 / Seminyak 約 55 分鐘（夜間路況稍順）", link:""},
+      {time:"20:00", icon:"📍", name:"抵達 Canggu/Seminyak 餐廳", desc:"今晚不趕了！按摩取消，可以慢慢吃。", link:""},
+      {time:"20:30", icon:"🍽", name:"🍽 晚餐 · Canggu/Seminyak（5 選 1）", desc:"20:00–22:00 在 Canggu/Seminyak 慢慢吃。下面五間任選，當天再決定（或先 line 群組投票）。<details class=\"dinner-opts\"><summary>▾ 展開 5 間候選餐廳</summary><div class=\"opt\"><span class=\"opt-n\">①</span><div><b>Santanera</b> <span class=\"opt-tag\">Canggu · Tanah Barak</span><div class=\"opt-meta\">拉美/西班牙 fine dining + 屋頂酒吧 · 12pm–12am · $$$</div><a class=\"opt-link\" href=\"https://www.santanerabali.com/\" target=\"_blank\" rel=\"noopener\">→ 官網</a></div></div><div class=\"opt\"><span class=\"opt-n\">②</span><div><b>La Brisa</b> <span class=\"opt-tag\">Canggu · Echo Beach</span><div class=\"opt-meta\">海邊 beach club · 永續海鮮 · 10am–11pm</div><a class=\"opt-link\" href=\"https://labrisa-bali.com/\" target=\"_blank\" rel=\"noopener\">→ 官網</a></div></div><div class=\"opt\"><span class=\"opt-n\">③</span><div><b>Alma Tapas Bar</b> <span class=\"opt-tag\">Canggu · Berawa</span><div class=\"opt-meta\">西班牙 tapas + 古典吉他現場 · 3pm–11pm（食物到 10:30）</div></div></div><div class=\"opt\"><span class=\"opt-n\">④</span><div><b>Mano Beach House</b> <span class=\"opt-tag\">Seminyak · Petitenget</span><div class=\"opt-meta\">海濱當代料理 · bohemian 風 · 11am–11pm</div><a class=\"opt-link\" href=\"https://www.manobali.com/\" target=\"_blank\" rel=\"noopener\">→ 官網</a></div></div><div class=\"opt\"><span class=\"opt-n\">⑤</span><div><b>Muda By/Suka</b> <span class=\"opt-tag\">Canggu · Munduk Catu</span><div class=\"opt-meta\">亞洲融合 + 創意調酒 · 暗色 moody · 6pm–11pm</div><a class=\"opt-link\" href=\"https://www.mudabysuka.com/\" target=\"_blank\" rel=\"noopener\">→ 官網</a></div></div></details>", link:""},
+      {time:"22:30", icon:"🏠", name:"Check-in Villa Jerami & Spa", desc:"離 Canggu/Seminyak 餐廳約 10–15 分鐘車程。洗澡睡覺，明天 07:15 出發沙努爾。", link:""},
+      {time:"23:00", icon:"😴", name:"入睡", desc:"充實但不像之前那麼操的一天 ✨", link:""}
     ],
     hotel: {
       icon:"🌴",
@@ -685,8 +674,11 @@ var TRIP_DATA = [
       {time:"07:15", icon:"🚗", name:"包車出發前往沙努爾港", desc:"⚠ 聖誕節早上交通擁擠，水明漾→沙努爾預估 60–80 分。", link:""},
       {time:"09:00", icon:"⛵", name:"沙努爾港出發 · 藍夢島一日遊", desc:"浮潛 + 藍夢島（Klook）。景點：Manta Bay、Crystal Bay、Mangrove Point。12月海況不穩定可能改備案地點。", link:"https://www.klook.com/zh-TW/activity/21684-nusa-lembongan-manta-bay-snorkeling-experience/"},
       {time:"午餐", icon:"🍽", name:"午餐 · 藍夢島餐廳", desc:"行程含午餐或島上自理，推薦 Sandy Bay Beach Club", link:""},
-      {time:"17:00", icon:"🚢", name:"返回沙努爾港 · 前往烏布", desc:"沙努爾→烏布約 1–1.5 小時，抵達約 19:00。帶乾衣服在車上換。", link:""},
-      {time:"19:30", icon:"🍽", name:"晚餐 · 烏布市區（吃完直接回 Villa）", desc:"推薦 Locavore（名廚料理，需提前訂）/ Bridges Ubud（峽谷景觀）/ Kafe Ubud。21:00 前結束！明天凌晨 02:30 出發。", link:""},
+      {time:"17:00", icon:"🚢", name:"返回沙努爾港", desc:"船準時：17:00 上岸 → 可選按摩。船晚到（17:30 後）：直接前往烏布。", link:""},
+      {time:"17:30", icon:"💆", name:"[Optional] Sanur 60min 按摩", desc:"⏰ 只有船 17:00 準時到才做。Sanur 港旁有多家平價 spa（IDR 150–200K/人）。否則跳過直接走，省 1 小時。", link:""},
+      {time:"18:30", icon:"🚗", name:"出發前往烏布", desc:"Sanur → 烏布約 1–1.5 小時。", link:""},
+      {time:"20:00", icon:"🏠", name:"抵達 Villa Langon Ubud · 簡單整理", desc:"Lodtunduh 區，安靜稻田。放行李、換衣服，準備出門吃晚餐。", link:""},
+      {time:"20:30", icon:"🍽", name:"🍽 晚餐 · Kagemusha（日式家常）", desc:"日本人家庭經營的隱藏版日料，Nyuh Kuning（Monkey Forest 南側）。烏龍麵、炸豬排咖哩、烤鯖魚都很經典。需訂位。10am–10pm。", link:"https://www.instagram.com/kagemusha_bali/"},
       {time:"22:00", icon:"😴", name:"早睡 · 為明天 Mt Batur 做準備", desc:"02:00 起床，02:30 出發。睡眠時間僅 4 小時，務必早睡。", link:""}
     ],
     hotel: {
@@ -707,7 +699,7 @@ var TRIP_DATA = [
       {time:"12:30", icon:"🍽", name:"午餐 · Tis Cafe（梯田旁咖啡廳）", desc:"原本想去的 Kintamani Lakeview 已歇業，改去 Tis Cafe（Gianyar Regency，烏布旁）。正餐 + 著名鞦韆網美照可拍。", link:"https://maps.app.goo.gl/MgkVcgBD1cDa4mQ36"},
       {time:"14:00", icon:"💆", name:"Jaens Spa Center Ubud · 90 分鐘按摩", desc:"火山日出後身體爆累，按摩就是最好的休息。從金塔瑪尼直接過來，午餐後不繞回 Villa。IDR 280K+/人 · 4.9★。☎ +62 811-3990-5109", link:"https://jaensspa.com/"},
       {time:"15:30", icon:"🏠", name:"回 Villa Langon · 整晚自由休息", desc:"⭐ 今晚不再安排活動！火舞已在 Day 1 看完。可以游泳、放空、睡飽。", link:""},
-      {time:"19:00", icon:"🍽", name:"晚餐 · Bebek Tepi Sawah（隨意）", desc:"烏布稻田景觀餐廳烤鴨。距 Villa 15 分鐘。也可以隨便就近吃，或請 Villa 安排晚餐到客房。", link:""},
+      {time:"19:00", icon:"🍽", name:"🍽 晚餐 · Bebek Tebasari Resto", desc:"招牌 Bebek Betutu 烤鴨 + 稻田水上涼亭，**就在 Lodtunduh，離 Villa Langon 走路可到的距離**。氣氛浪漫。10am–9:30pm。", link:"https://tebasari.com/bebek-tebasari/"},
       {time:"21:00", icon:"😴", name:"早睡 · 補回昨晚的睡眠債", desc:"明天可以慢起，9-10 點再出發都來得及", link:""}
     ],
     hotel: {
@@ -725,7 +717,7 @@ var TRIP_DATA = [
       {time:"早上", icon:"😴", name:"睡到飽 · 吃漂浮早餐", desc:"昨天凌晨出發太累了，好好休息！Villa Langon 可詢問是否提供漂浮早餐。", link:""},
       {time:"10:00", icon:"🚗", name:"出發", desc:"", link:""},
       {time:"11:00", icon:"🏍", name:"烏布 ATV 越野 → 特格嫩甘瀑布", desc:"ATV 穿越烏布田間（超刺激！），接著 Tegenungan Waterfall 戲水拍照，全程 11:00–15:30。", link:"https://www.klook.com/zh-TW/activity/6595-atv-quad-bike-adventure-bali/"},
-      {time:"午餐", icon:"🍽", name:"午餐 · 回烏布吃（TBD）", desc:"從 ATV/瀑布回烏布鎮約 25–30 分鐘。具體餐廳待後續從 Kagemusha / Bebek Tebasari / L'Osteria / Kebun Bistro 中選。", link:""},
+      {time:"13:30", icon:"🍽", name:"🍽 午餐 · L'Osteria Pizza e Cucina", desc:"Jl. Monkey Forest 8（烏布鎮中心）。48 小時發酵的拿坡里 pizza + 手工義大利麵。快又道地，回烏布吃午餐的首選。12pm–11pm。", link:"https://www.instagram.com/losteriapizzaecucina/"},
       {time:"15:30", icon:"🚗", name:"直接出發前往 AYANA Jimbaran", desc:"瀑布 → AYANA 約 1.5 小時。今天不繞回烏布，省時間。", link:""},
       {time:"17:00", icon:"🏨", name:"AYANA Resort · 提早 Check-in", desc:"3 房 6 大人，Sea View 海景房。Check-in 後立刻享受 Resort 設施。", link:""},
       {time:"17:30", icon:"🏊", name:"享受 AYANA Resort 設施", desc:"游泳、看日落、Luna Rooftop。慢慢梳洗準備晚餐。", link:""},
@@ -784,15 +776,17 @@ var PLACES = [
   // Day 1 (12/24)
   {n:"DPS 機場",                lat:-8.7470, lng:115.1682, type:"act",   d:"12/24",       x:"14:40 抵達"},
   {n:"Tanah Lot 海神廟 + Kecak", lat:-8.6212, lng:115.0868, type:"act", d:"12/24",        x:"⭐ Day 1 重點 · 16:30 抵達 · 18:00 火舞"},
-  {n:"Bodyworks Spa",          lat:-8.6762, lng:115.1572, type:"act",   d:"12/24",       x:"21:00 · 60min Balinese · IDR 300K"},
+  {n:"Canggu/Seminyak 晚餐區",   lat:-8.6600, lng:115.1350, type:"act",   d:"12/24",       x:"5 選 1：Santanera / La Brisa / Alma Tapas / Mano Beach House / Muda By/Suka"},
   // Day 2 (12/25)
-  {n:"Sanur 港口",              lat:-8.6718, lng:115.2593, type:"act",   d:"12/25",       x:"09:00 出發藍夢島"},
+  {n:"Sanur 港口",              lat:-8.6718, lng:115.2593, type:"act",   d:"12/25",       x:"09:00 出發藍夢島 · 17:00 回港"},
+  {n:"Kagemusha（日式）",       lat:-8.5266, lng:115.2603, type:"act",   d:"12/25",       x:"20:30 晚餐 · Nyuh Kuning · 日本家庭料理"},
   // Day 3 (12/26)
   {n:"Mt Batur 巴杜爾火山",     lat:-8.2401, lng:115.3775, type:"act",   d:"12/26",       x:"04:30 集合 · 日出"},
   {n:"Tegallalang 梯田",        lat:-8.4317, lng:115.2793, type:"act",   d:"12/26",       x:"層層稻田"},
   {n:"Jaens Spa Center Ubud",  lat:-8.5216, lng:115.2630, type:"act",   d:"12/26",       x:"14:00 · 90min · IDR 280K+"},
-  {n:"Bebek Tepi Sawah",       lat:-8.5237, lng:115.2728, type:"act",   d:"12/26",       x:"稻田景觀烤鴨"},
+  {n:"Bebek Tebasari Resto",   lat:-8.5530, lng:115.2580, type:"act",   d:"12/26",       x:"19:00 晚餐 · Lodtunduh · 烤鴨+稻田涼亭"},
   // Day 4 (12/27)
+  {n:"L'Osteria（義式）",       lat:-8.5181, lng:115.2611, type:"act",   d:"12/27",       x:"13:30 午餐 · Monkey Forest 街 · 拿坡里 pizza"},
   {n:"Tegenungan 瀑布",         lat:-8.5754, lng:115.2890, type:"act",   d:"12/27",       x:"ATV 後戲水拍照"},
   // Day 5 (12/28)
   {n:"Rock Bar @ AYANA",       lat:-8.7842, lng:115.1385, type:"act",   d:"12/27,12/28", x:"懸崖海景酒吧 · 日落"},
@@ -860,7 +854,7 @@ function showSyncStatus(text) {
 // Render desc with simple <br> support and tag/link interpretation
 function renderDesc(desc, link) {
   if (!desc && !link) return '';
-  var html = escHtml(desc || '').replace(/\n/g, '<br>');
+  var html = (desc || '').replace(/\n/g, '<br>');
   if (link) {
     html += '<br><a class="c-link" href="' + escHtml(link) + '" target="_blank" rel="noopener">→ 連結</a>';
   }
