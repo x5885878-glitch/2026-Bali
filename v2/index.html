@@ -332,27 +332,24 @@ html, body {
 
 .toast { background: rgba(10,14,26,0.95); backdrop-filter: blur(10px); border: 1px solid var(--border); color: var(--txt); box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
 
-.gm-style .gm-style-iw-c,
-.gm-style .gm-style-iw,
-.gm-style .gm-style-iw-t {
-  padding: 0 !important;
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  max-width: 280px !important;
-}
-.gm-style .gm-style-iw-d {
+.gm-style .gm-style-iw-c {
   padding: 14px 18px !important;
   background: #141827 !important;
   border-radius: 12px !important;
   border: 1px solid rgba(255,255,255,0.10) !important;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.55), 0 0 0 1px rgba(45,212,191,0.08) !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.55) !important;
+  max-width: 280px !important;
+}
+.gm-style .gm-style-iw-d {
   overflow: visible !important;
+  padding: 0 !important;
   max-height: none !important;
 }
+/* Hide close button row + tail to remove the empty black bar artifact */
 .gm-style .gm-style-iw-chr,
-.gm-style .gm-style-iw-tc,
-.gm-style .gm-ui-hover-effect { display: none !important; }
+.gm-style button.gm-ui-hover-effect {
+  display: none !important;
+}
 .gm-iw-name { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: var(--txt); margin-bottom: 4px; letter-spacing: -0.01em; }
 .gm-iw-date { font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
 .gm-iw-desc { font-size: 12px; color: var(--txt2); margin-top: 6px; line-height: 1.6; }
@@ -1031,7 +1028,7 @@ function renderMap(dayIdx) {
   GM_MARKERS.forEach(function(m){ m.setMap(null); });
   GM_MARKERS = [];
   if (GM_INFO) GM_INFO.close();
-  GM_INFO = new google.maps.InfoWindow({ headerDisabled: true });
+  GM_INFO = new google.maps.InfoWindow();
 
   places.forEach(function(p, i) {
     var color = p.type === 'hotel' ? '#f472b6' : '#38bdf8';
