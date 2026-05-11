@@ -332,10 +332,30 @@ html, body {
 
 .toast { background: rgba(10,14,26,0.95); backdrop-filter: blur(10px); border: 1px solid var(--border); color: var(--txt); box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
 
-.gm-style .gm-style-iw-c { padding: 12px 16px !important; background: var(--bg2) !important; border-radius: 12px !important; border: 1px solid var(--border) !important; }
-.gm-iw-name { font-size: 14px; font-weight: 700; color: var(--txt); margin-bottom: 3px; }
-.gm-iw-date { font-size: 10px; color: var(--txt3); }
-.gm-iw-desc { font-size: 11px; color: var(--txt2); margin-top: 5px; }
+.gm-style .gm-style-iw-c,
+.gm-style .gm-style-iw,
+.gm-style .gm-style-iw-t {
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  max-width: 280px !important;
+}
+.gm-style .gm-style-iw-d {
+  padding: 14px 18px !important;
+  background: #141827 !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255,255,255,0.10) !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.55), 0 0 0 1px rgba(45,212,191,0.08) !important;
+  overflow: visible !important;
+  max-height: none !important;
+}
+.gm-style .gm-style-iw-chr,
+.gm-style .gm-style-iw-tc,
+.gm-style .gm-ui-hover-effect { display: none !important; }
+.gm-iw-name { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: var(--txt); margin-bottom: 4px; letter-spacing: -0.01em; }
+.gm-iw-date { font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
+.gm-iw-desc { font-size: 12px; color: var(--txt2); margin-top: 6px; line-height: 1.6; }
 
 </style>
 </head>
@@ -1011,7 +1031,7 @@ function renderMap(dayIdx) {
   GM_MARKERS.forEach(function(m){ m.setMap(null); });
   GM_MARKERS = [];
   if (GM_INFO) GM_INFO.close();
-  GM_INFO = new google.maps.InfoWindow();
+  GM_INFO = new google.maps.InfoWindow({ headerDisabled: true });
 
   places.forEach(function(p, i) {
     var color = p.type === 'hotel' ? '#f472b6' : '#38bdf8';
@@ -1048,17 +1068,21 @@ function renderMap(dayIdx) {
 
 function darkMapStyles() {
   return [
-    { elementType: 'geometry', stylers: [{ color: '#1f2747' }] },
-    { elementType: 'labels.text.stroke', stylers: [{ color: '#0c1222' }] },
-    { elementType: 'labels.text.fill', stylers: [{ color: '#94a3b8' }] },
-    { featureType: 'administrative.locality', elementType: 'labels.text.fill', stylers: [{ color: '#cbd5e1' }] },
-    { featureType: 'poi', elementType: 'labels.text.fill', stylers: [{ color: '#94a3b8' }] },
-    { featureType: 'poi.park', elementType: 'geometry', stylers: [{ color: '#0f3a2e' }] },
-    { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#2a3458' }] },
-    { featureType: 'road', elementType: 'geometry.stroke', stylers: [{ color: '#1f2747' }] },
-    { featureType: 'road', elementType: 'labels.text.fill', stylers: [{ color: '#94a3b8' }] },
-    { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0a1530' }] },
-    { featureType: 'water', elementType: 'labels.text.fill', stylers: [{ color: '#38bdf8' }] }
+    { elementType: 'geometry', stylers: [{ color: '#141827' }] },
+    { elementType: 'labels.text.stroke', stylers: [{ color: '#0a0e1a' }] },
+    { elementType: 'labels.text.fill', stylers: [{ color: '#9ca3af' }] },
+    { featureType: 'administrative.locality', elementType: 'labels.text.fill', stylers: [{ color: '#e8e8ec' }] },
+    { featureType: 'poi', elementType: 'labels.text.fill', stylers: [{ color: '#9ca3af' }] },
+    { featureType: 'poi.park', elementType: 'geometry', stylers: [{ color: '#1a2d28' }] },
+    { featureType: 'poi.park', elementType: 'labels.text.fill', stylers: [{ color: '#6b9070' }] },
+    { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#1e2235' }] },
+    { featureType: 'road', elementType: 'geometry.stroke', stylers: [{ color: '#141827' }] },
+    { featureType: 'road', elementType: 'labels.text.fill', stylers: [{ color: '#9ca3af' }] },
+    { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#2d3550' }] },
+    { featureType: 'road.highway', elementType: 'geometry.stroke', stylers: [{ color: '#1e2235' }] },
+    { featureType: 'transit', elementType: 'geometry', stylers: [{ color: '#2d3550' }] },
+    { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0a1525' }] },
+    { featureType: 'water', elementType: 'labels.text.fill', stylers: [{ color: '#2dd4bf' }] }
   ];
 }
 
