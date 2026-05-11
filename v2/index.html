@@ -1498,7 +1498,7 @@ var COST_GROUPS = {
   trans:  ['c5','c6','c7'],
   act:    ['c8','c9','c10','c11','c12'],
   food:   ['c13','c14','c15'],
-  misc:   ['c16','c17','c18','c19']
+  misc:   ['c17','c18','c19']
 };
 
 function startCostEdit(el) {
@@ -1576,7 +1576,9 @@ function recalcCosts() {
   var allKeys = [].concat.apply([], Object.values(COST_GROUPS));
   var actualKnown = 0, budget = 0;
   allKeys.forEach(function(k){
-    var b = parseInt(document.querySelector('[data-key="'+k+'"]').getAttribute('data-budget')) || 0;
+    var node = document.querySelector('[data-key="'+k+'"]');
+    if (!node) return;  // skip rows that were removed from the DOM
+    var b = parseInt(node.getAttribute('data-budget')) || 0;
     budget += b;
     if (state.costs[k] !== undefined) actualKnown += state.costs[k];
   });
