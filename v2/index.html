@@ -354,6 +354,27 @@ html, body {
 .gm-iw-name { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: var(--txt); margin-bottom: 4px; letter-spacing: -0.01em; }
 .gm-iw-date { font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
 .gm-iw-desc { font-size: 12px; color: var(--txt2); margin-top: 6px; line-height: 1.6; }
+.gm-iw-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #0a0e1a !important;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.18s, box-shadow 0.18s, opacity 0.18s;
+}
+.gm-iw-nav:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(45,212,191,0.35);
+  opacity: 0.95;
+}
 
 </style>
 </head>
@@ -1049,9 +1070,11 @@ function renderMap(dayIdx) {
       }
     });
     marker.addListener('click', function(){
+      var navUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lng;
       var content = '<div class="gm-iw-name">' + escHtml(p.n) + '</div>' +
         '<div class="gm-iw-date">' + escHtml(p.d) + '</div>' +
-        '<div class="gm-iw-desc">' + escHtml(p.x || '') + '</div>';
+        '<div class="gm-iw-desc">' + escHtml(p.x || '') + '</div>' +
+        '<a class="gm-iw-nav" href="' + navUrl + '" target="_blank" rel="noopener">🧭 用 Google Maps 導航</a>';
       GM_INFO.setContent(content);
       GM_INFO.open(GMAP, marker);
     });
